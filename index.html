@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JieZi - A Large-Scale Chinese Character Understanding Dataset</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #e8e8ed;
+            --text-secondary: #8b8b9e;
+            --accent-blue: #4f8fff;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #22d3ee;
+            --accent-amber: #f59e0b;
+            --glow-blue: rgba(79, 143, 255, 0.15);
+            --glow-purple: rgba(139, 92, 246, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Noto Serif SC', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        header.scrolled {
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+        .logo span {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+        nav ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            padding: 140px 0 80px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(79, 143, 255, 0.12), transparent 60%),
+                        radial-gradient(ellipse at 80% 50%, rgba(139, 92, 246, 0.08), transparent 50%);
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(79, 143, 255, 0.1);
+            border: 1px solid rgba(79, 143, 255, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 28px;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            color: #fff;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            box-shadow: 0 4px 20px var(--glow-blue);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--glow-blue);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* ========== ABSTRACT ========== */
+        .abstract-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        .abstract-box p {
+            margin-bottom: 16px;
+        }
+        .abstract-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== STATS ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ========== VQA DEMO ========== */
+        .vqa-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .vqa-filter-btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .vqa-filter-btn:hover, .vqa-filter-btn.active {
+            background: rgba(79, 143, 255, 0.1);
+            border-color: rgba(79, 143, 255, 0.3);
+            color: var(--accent-blue);
+        }
+        .vqa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .vqa-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .vqa-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .vqa-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: #0d0d12;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .vqa-card img:hover {
+            transform: scale(1.03);
+        }
+        .vqa-card-body {
+            padding: 20px;
+        }
+        .vqa-question {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .vqa-answer {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(79, 143, 255, 0.15), rgba(139, 92, 246, 0.15));
+            border: 1px solid rgba(79, 143, 255, 0.2);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        .vqa-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 48px;
+        }
+        .vqa-pagination button {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .vqa-pagination button:hover:not(:disabled) {
+            background: rgba(79, 143, 255, 0.1);
+            border-color: rgba(79, 143, 255, 0.3);
+            color: var(--accent-blue);
+        }
+        .vqa-pagination button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .vqa-pagination span {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* ========== CITATION ========== */
+        .citation-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .citation-box pre {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .copy-btn:hover {
+            background: rgba(79, 143, 255, 0.1);
+            border-color: rgba(79, 143, 255, 0.3);
+            color: var(--accent-blue);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* ========== MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-overlay img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 120px 0 60px; }
+            .section { padding: 60px 0; }
+            .section-title h2 { font-size: 1.8rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .vqa-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo"><span>JieZi</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#abstract">Abstract</a></li>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#vqa">VQA Demo</a></li>
+                        <li><a href="#citation">Citation</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-database"></i> Dataset & Benchmark</div>
+                <h1>JieZi: A Large-Scale <span class="highlight">Chinese Character</span> Understanding Dataset</h1>
+                <p class="subtitle">
+                    【TODO: 请在此处填写副标题，简要描述项目的核心贡献，例如数据集的规模、任务类型等】
+                </p>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Paper
+                    </a>
+                    <a href="https://github.com/your-org/JieZi" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+                    <a href="#" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-download"></i> Dataset
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abstract -->
+    <section id="abstract" class="section">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>Abstract</h2>
+            </div>
+            <div class="abstract-box fade-up">
+                <p>
+                    【TODO: 请在此处填写论文摘要。描述JieZi数据集的动机、构建方法、核心特点以及潜在应用价值。】
+                </p>
+                <p>
+                    【TODO: 可补充第二段，介绍数据集涵盖的字体类型、任务形式等。】
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>Dataset Overview</h2>
+                <p>【TODO: 请在此处填写数据集概览描述】</p>
+            </div>
+            <div class="stats-grid fade-up">
+                <div class="stat-card">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">VQA Samples</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Character Types</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Question Templates</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">Images</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VQA Demo -->
+    <section id="vqa" class="section">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>VQA Examples</h2>
+                <p>Interactive samples from the JieZi VQA dataset. Click on any image to enlarge.</p>
+            </div>
+            <div class="vqa-controls fade-up">
+                <button class="vqa-filter-btn active" data-filter="all">All</button>
+                <button class="vqa-filter-btn" data-filter="楷书">楷书</button>
+                <button class="vqa-filter-btn" data-filter="隶书">隶书</button>
+                <button class="vqa-filter-btn" data-filter="草书">草书</button>
+                <button class="vqa-filter-btn" data-filter="篆书">篆书</button>
+                <button class="vqa-filter-btn" data-filter="甲骨文">甲骨文</button>
+                <button class="vqa-filter-btn" data-filter="金文">金文</button>
+                <button class="vqa-filter-btn" data-filter="古文">古文</button>
+            </div>
+            <div class="vqa-grid fade-up" id="vqaGrid"></div>
+            <div class="vqa-pagination fade-up" id="vqaPagination"></div>
+        </div>
+    </section>
+
+    <!-- Citation -->
+    <section id="citation" class="section">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>Citation</h2>
+            </div>
+            <div class="citation-box fade-up">
+                <button class="copy-btn" onclick="copyBibtex()">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+                <pre>
+【TODO: 请在此处填写BibTeX引用格式】
+@article{jiezi2025,
+  title={JieZi: A Large-Scale Chinese Character Understanding Dataset},
+  author={TODO},
+  journal={arXiv preprint},
+  year={2025}
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                JieZi &copy; 2025 &nbsp;|&nbsp;
+                <a href="#" target="_blank">GitHub</a> &nbsp;|&nbsp;
+                【TODO: 其他链接】
+            </p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div class="modal-overlay" id="imageModal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <img id="modalImage" src="" alt="">
+    </div>
+
+    <script>
+        // ==================== DATA ====================
+        let allData = [];
+        let filteredData = [];
+        let currentPage = 1;
+        const itemsPerPage = 12;
+
+        async function loadData() {
+            try {
+                const response = await fetch('data/vqa_data.json');
+                allData = await response.json();
+                filteredData = [...allData];
+                renderVQA();
+            } catch (error) {
+                console.error('Failed to load VQA data:', error);
+                document.getElementById('vqaGrid').innerHTML =
+                    '<p style="text-align:center;color:var(--text-secondary);grid-column:1/-1;">Failed to load data. Please check the console for details.</p>';
+            }
+        }
+
+        // ==================== RENDER ====================
+        function renderVQA() {
+            const grid = document.getElementById('vqaGrid');
+            const pagination = document.getElementById('vqaPagination');
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageData = filteredData.slice(start, end);
+
+            grid.innerHTML = pageData.map(item => `
+                <div class="vqa-card">
+                    <img src="${item.image}" alt="${item.answer}" loading="lazy" onclick="openModal('${item.image}')">
+                    <div class="vqa-card-body">
+                        <div class="vqa-question">${item.question}</div>
+                        <div class="vqa-answer"><i class="fas fa-check-circle"></i> ${item.answer}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            pagination.innerHTML = `
+                <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span>Page ${currentPage} of ${totalPages}</span>
+                <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+
+            // Re-trigger fade animation
+            grid.classList.remove('visible');
+            setTimeout(() => grid.classList.add('visible'), 50);
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderVQA();
+            document.getElementById('vqa').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ==================== FILTER ====================
+        document.querySelectorAll('.vqa-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.vqa-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                if (filter === 'all') {
+                    filteredData = [...allData];
+                } else {
+                    filteredData = allData.filter(item => item.answer === filter);
+                }
+                currentPage = 1;
+                renderVQA();
+            });
+        });
+
+        // ==================== HEADER SCROLL ====================
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const el = document.querySelector(targetId);
+                if (el) {
+                    window.scrollTo({ top: el.offsetTop - 72, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ==================== SCROLL REVEAL ====================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // ==================== MODAL ====================
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalImage').src = src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('imageModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ==================== COPY BIBTEX ====================
+        function copyBibtex() {
+            const bibtex = document.querySelector('.citation-box pre').textContent;
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                }, 2000);
+            });
+        }
+
+        // ==================== INIT ====================
+        loadData();
+    </script>
+</body>
+</html>
