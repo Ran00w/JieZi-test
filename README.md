@@ -34,7 +34,7 @@ The collated and annotated dataset presented in this case is for **non-commercia
 ## Download
 
 - This repo currently hosts supplementary material and part of data.
-- Full dataset/code/model release links will be added after publication.
+- Full dataset/code/model release links are available below.
 
 | Platform | Link |
 | --- | --- |
@@ -51,9 +51,4 @@ We plan to release:
 
 ## License
 
-The repository currently uses the license in [LICENSE](LICENSE).
-Dataset/model licenses will be announced with the official release.
-
-## Citation
-
-Citation information will be added after publication.
+This repository and the dataset are released under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans) for **non-commercial research purposes** only. By downloading or using the data, you agree to comply with the terms of this license.

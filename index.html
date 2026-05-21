@@ -100,12 +100,14 @@
             padding: 140px 0 80px;
             overflow: hidden;
             text-align: center;
+            background: url('docs/assets/hero_background.jpg') center/cover no-repeat;
         }
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(79, 143, 255, 0.12), transparent 60%),
+            background: linear-gradient(to bottom, rgba(10, 10, 15, 0.75), rgba(10, 10, 15, 0.55)),
+                        radial-gradient(ellipse at 50% 0%, rgba(79, 143, 255, 0.12), transparent 60%),
                         radial-gradient(ellipse at 80% 50%, rgba(139, 92, 246, 0.08), transparent 50%);
             z-index: 0;
         }
@@ -521,7 +523,7 @@
                         <li><a href="#abstract">Abstract</a></li>
                         <li><a href="#overview">Overview</a></li>
                         <li><a href="#vqa">VQA Demo</a></li>
-                        <li><a href="#citation">Citation</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -541,7 +543,7 @@
                     <a href="#" class="btn btn-primary" target="_blank">
                         <i class="fas fa-file-pdf"></i> Paper
                     </a>
-                    <a href="https://github.com/your-org/JieZi" class="btn btn-secondary" target="_blank">
+                    <a href="https://github.com/Ran00w/JieZi" class="btn btn-secondary" target="_blank">
                         <i class="fab fa-github"></i> Code
                     </a>
                     <a href="#" class="btn btn-secondary" target="_blank">
@@ -560,11 +562,19 @@
             </div>
             <div class="abstract-box fade-up">
                 <p>
-                    【TODO: 请在此处填写论文摘要。描述JieZi数据集的动机、构建方法、核心特点以及潜在应用价值。】
-                </p>
-                <p>
-                    【TODO: 可补充第二段，介绍数据集涵盖的字体类型、任务形式等。】
-                </p>
+                    The scholarly exegesis of ancient Chinese characters demands integrating visual observation, linguistic analysis, and historical context. However, existing computational approaches focus narrowly on subtasks such as character recognition and retrieval, lacking the structured datasets and benchmarks required for comprehensive scholarly analysis. To address this limitation, we introduce Ancient Chinese Character Exegesis, a vision-language question answering (VQA) task that models the scholarly exegesis process. ACCE is organized into four progressive levels: basic character identification, glyph-form analysis, meaning exegesis, and diachronic evolution analysis. To support this task, we construct two complementary resources. JieZi-Dataset is the first large-scale, expert-audited VQA training dataset for ACCE, comprising over 500K QA pairs. It is constructed via a pipeline that reduces factual errors by constraining generation with expert-designed templates and source-text references. Human verification is further applied at each key stage to ensure scholarly accuracy. JieZi-Bench is an evaluation benchmark aligned with the exegesis process, constructed and verified by human experts to ensure evaluation reliability. It consists of four levels with reference answers curated from authoritative lexicographic works held separate from the training data. Experiments on multimodal large language models show that current models perform well on basic identification but struggle with glyph analysis, semantic reasoning, and diachronic understanding. Fine-tuning on JieZi-Dataset substantially improves performance across all four levels. Code and dataset are available at https://github.com/Ran00w/JieZi.
+        </div>
+    </section>
+
+    <!-- Main Figure -->
+    <section id="framework" class="section">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>Framework Overview</h2>
+                <p>Overall pipeline of the JieZi dataset and benchmark construction.</p>
+            </div>
+            <div class="fade-up" style="text-align: center;">
+                <img src="docs/figures/paper_main_figure_v3.png" alt="JieZi Framework" style="max-width: 100%; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 12px 40px rgba(0,0,0,0.4);">
             </div>
         </div>
     </section>
@@ -619,35 +629,12 @@
         </div>
     </section>
 
-    <!-- Citation -->
-    <section id="citation" class="section">
-        <div class="container">
-            <div class="section-title fade-up">
-                <h2>Citation</h2>
-            </div>
-            <div class="citation-box fade-up">
-                <button class="copy-btn" onclick="copyBibtex()">
-                    <i class="fas fa-copy"></i> Copy
-                </button>
-                <pre>
-【TODO: 请在此处填写BibTeX引用格式】
-@article{jiezi2025,
-  title={JieZi: A Large-Scale Chinese Character Understanding Dataset},
-  author={TODO},
-  journal={arXiv preprint},
-  year={2025}
-}</pre>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>
                 JieZi &copy; 2025 &nbsp;|&nbsp;
-                <a href="#" target="_blank">GitHub</a> &nbsp;|&nbsp;
-                【TODO: 其他链接】
+                <a href="https://github.com/Ran00w/JieZi" target="_blank">GitHub</a>
             </p>
         </div>
     </footer>
