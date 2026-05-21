@@ -97,7 +97,7 @@
         /* ========== HERO ========== */
         .hero {
             position: relative;
-            padding: 140px 0 80px;
+            padding: 140px 0 160px;
             overflow: hidden;
             text-align: center;
             background: url('docs/assets/hero_background.jpg') center/cover no-repeat;
@@ -550,6 +550,9 @@
                         <i class="fas fa-download"></i> Dataset
                     </a>
                 </div>
+                <div style="margin-top: 48px;">
+                    <img src="docs/figures/paper_main_figure_v3.png" alt="JieZi Framework" style="max-width: 90%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+                </div>
             </div>
         </div>
     </section>
@@ -563,19 +566,6 @@
             <div class="abstract-box fade-up">
                 <p>
                     The scholarly exegesis of ancient Chinese characters demands integrating visual observation, linguistic analysis, and historical context. However, existing computational approaches focus narrowly on subtasks such as character recognition and retrieval, lacking the structured datasets and benchmarks required for comprehensive scholarly analysis. To address this limitation, we introduce Ancient Chinese Character Exegesis, a vision-language question answering (VQA) task that models the scholarly exegesis process. ACCE is organized into four progressive levels: basic character identification, glyph-form analysis, meaning exegesis, and diachronic evolution analysis. To support this task, we construct two complementary resources. JieZi-Dataset is the first large-scale, expert-audited VQA training dataset for ACCE, comprising over 500K QA pairs. It is constructed via a pipeline that reduces factual errors by constraining generation with expert-designed templates and source-text references. Human verification is further applied at each key stage to ensure scholarly accuracy. JieZi-Bench is an evaluation benchmark aligned with the exegesis process, constructed and verified by human experts to ensure evaluation reliability. It consists of four levels with reference answers curated from authoritative lexicographic works held separate from the training data. Experiments on multimodal large language models show that current models perform well on basic identification but struggle with glyph analysis, semantic reasoning, and diachronic understanding. Fine-tuning on JieZi-Dataset substantially improves performance across all four levels. Code and dataset are available at https://github.com/Ran00w/JieZi.
-        </div>
-    </section>
-
-    <!-- Main Figure -->
-    <section id="framework" class="section">
-        <div class="container">
-            <div class="section-title fade-up">
-                <h2>Framework Overview</h2>
-                <p>Overall pipeline of the JieZi dataset and benchmark construction.</p>
-            </div>
-            <div class="fade-up" style="text-align: center;">
-                <img src="docs/figures/paper_main_figure_v3.png" alt="JieZi Framework" style="max-width: 100%; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 12px 40px rgba(0,0,0,0.4);">
-            </div>
         </div>
     </section>
 
