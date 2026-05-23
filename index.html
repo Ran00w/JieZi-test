@@ -489,6 +489,284 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
+        /* ========== LEVEL TABS ========== */
+        .level-tabs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .level-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 16px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 140px;
+        }
+        .level-tab:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .level-tab.active {
+            background: linear-gradient(135deg, rgba(79, 143, 255, 0.15), rgba(139, 92, 246, 0.15));
+            border-color: rgba(79, 143, 255, 0.4);
+            color: var(--text-primary);
+            box-shadow: 0 4px 20px var(--glow-blue);
+        }
+        .level-tab .tab-num {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .level-tab.active .tab-num {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .level-tab .tab-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ========== LEVEL DESC ========== */
+        .level-desc {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+        .level-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(79, 143, 255, 0.1);
+            border: 1px solid rgba(79, 143, 255, 0.25);
+            border-radius: 6px;
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* ========== DEMO CARDS ========== */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .demo-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .demo-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .demo-card-img-wrap {
+            position: relative;
+            padding: 20px;
+            background: #0d0d12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+        }
+        .demo-card img {
+            max-height: 160px;
+            max-width: 100%;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .demo-card img:hover {
+            transform: scale(1.05);
+        }
+        .char-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-family: 'Noto Serif SC', serif;
+        }
+        .script-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+        .demo-card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .demo-question {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        .demo-answer {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            flex: 1;
+        }
+        .demo-answer .hl-script { color: var(--accent-cyan); font-weight: 600; }
+        .demo-answer .hl-structure { color: #a78bfa; font-weight: 600; }
+        .demo-answer .hl-etymology { color: #f59e0b; font-weight: 600; }
+        .demo-answer .hl-meaning { color: #34d399; font-weight: 600; }
+        .demo-answer .hl-component { color: #f472b6; font-weight: 600; }
+        .task-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 3px 10px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ========== EVOLUTION TIMELINE ========== */
+        .evolution-chain {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+            transition: all 0.3s;
+        }
+        .evolution-chain:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .evolution-chain-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            text-align: center;
+            font-family: 'Noto Serif SC', serif;
+        }
+        .evolution-chain-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+        .evolution-timeline {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .evolution-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 100px;
+            max-width: 140px;
+        }
+        .evolution-stage-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #0d0d12;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .evolution-stage-img:hover {
+            border-color: rgba(79, 143, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .evolution-stage-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .evolution-stage-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        .evolution-arrow {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin-top: 40px;
+            opacity: 0.5;
+        }
+        .evolution-desc {
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            padding: 20px 24px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            border: 1px solid var(--border-color);
+        }
+        .evolution-desc .hl-script { color: var(--accent-cyan); font-weight: 600; }
+        .evolution-desc .hl-meaning { color: #34d399; font-weight: 600; }
+        .evolution-desc .hl-etymology { color: #f59e0b; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .evolution-arrow { display: none; }
+            .evolution-timeline { gap: 12px; }
+            .evolution-stage { min-width: 80px; max-width: 100px; }
+            .level-tab { min-width: 100px; padding: 12px 16px; }
+            .demo-grid { grid-template-columns: 1fr; }
+        }
+
         /* ========== ANIMATIONS ========== */
         .fade-up {
             opacity: 0;
@@ -566,6 +844,8 @@
             <div class="abstract-box fade-up">
                 <p>
                     The scholarly exegesis of ancient Chinese characters demands integrating visual observation, linguistic analysis, and historical context. However, existing computational approaches focus narrowly on subtasks such as character recognition and retrieval, lacking the structured datasets and benchmarks required for comprehensive scholarly analysis. To address this limitation, we introduce Ancient Chinese Character Exegesis, a vision-language question answering (VQA) task that models the scholarly exegesis process. ACCE is organized into four progressive levels: basic character identification, glyph-form analysis, meaning exegesis, and diachronic evolution analysis. To support this task, we construct two complementary resources. JieZi-Dataset is the first large-scale, expert-audited VQA training dataset for ACCE, comprising over 500K QA pairs. It is constructed via a pipeline that reduces factual errors by constraining generation with expert-designed templates and source-text references. Human verification is further applied at each key stage to ensure scholarly accuracy. JieZi-Bench is an evaluation benchmark aligned with the exegesis process, constructed and verified by human experts to ensure evaluation reliability. It consists of four levels with reference answers curated from authoritative lexicographic works held separate from the training data. Experiments on multimodal large language models show that current models perform well on basic identification but struggle with glyph analysis, semantic reasoning, and diachronic understanding. Fine-tuning on JieZi-Dataset substantially improves performance across all four levels. Code and dataset are available at https://github.com/Ran00w/JieZi.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -574,24 +854,24 @@
         <div class="container">
             <div class="section-title fade-up">
                 <h2>Dataset Overview</h2>
-                <p>【TODO: 请在此处填写数据集概览描述】</p>
+                <p>JieZi comprises four progressive levels of ancient Chinese character exegesis, from basic identification to diachronic evolution analysis, spanning 500K+ expert-audited VQA pairs across 7 scripts.</p>
             </div>
             <div class="stats-grid fade-up">
                 <div class="stat-card">
-                    <div class="stat-number">2,000+</div>
-                    <div class="stat-label">VQA Samples</div>
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">VQA Pairs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Progressive Levels</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">7</div>
-                    <div class="stat-label">Character Types</div>
+                    <div class="stat-label">Scripts</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Question Templates</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">2,000+</div>
-                    <div class="stat-label">Images</div>
+                    <div class="stat-number">8,700+</div>
+                    <div class="stat-label">Characters</div>
                 </div>
             </div>
         </div>
@@ -601,21 +881,41 @@
     <section id="vqa" class="section">
         <div class="container">
             <div class="section-title fade-up">
-                <h2>VQA Examples</h2>
-                <p>Interactive samples from the JieZi VQA dataset. Click on any image to enlarge.</p>
+                <h2>ACCE Task Demo</h2>
+                <p>Explore the four progressive levels of Ancient Chinese Character Exegesis (ACCE). Click any image to enlarge.</p>
             </div>
-            <div class="vqa-controls fade-up">
-                <button class="vqa-filter-btn active" data-filter="all">All</button>
-                <button class="vqa-filter-btn" data-filter="楷书">楷书</button>
-                <button class="vqa-filter-btn" data-filter="隶书">隶书</button>
-                <button class="vqa-filter-btn" data-filter="草书">草书</button>
-                <button class="vqa-filter-btn" data-filter="篆书">篆书</button>
-                <button class="vqa-filter-btn" data-filter="甲骨文">甲骨文</button>
-                <button class="vqa-filter-btn" data-filter="金文">金文</button>
-                <button class="vqa-filter-btn" data-filter="古文">古文</button>
+
+            <!-- Level Tabs -->
+            <div class="level-tabs fade-up" id="levelTabs">
+                <button class="level-tab active" data-level="l1">
+                    <div class="tab-num">L1</div>
+                    <div class="tab-text">基本字形识别</div>
+                </button>
+                <button class="level-tab" data-level="l2">
+                    <div class="tab-num">L2</div>
+                    <div class="tab-text">字形结构分析</div>
+                </button>
+                <button class="level-tab" data-level="l3">
+                    <div class="tab-num">L3</div>
+                    <div class="tab-text">字义与造字法</div>
+                </button>
+                <button class="level-tab" data-level="l4">
+                    <div class="tab-num">L4</div>
+                    <div class="tab-text">历时演变分析</div>
+                </button>
             </div>
-            <div class="vqa-grid fade-up" id="vqaGrid"></div>
-            <div class="vqa-pagination fade-up" id="vqaPagination"></div>
+
+            <!-- Level Description -->
+            <div class="level-desc fade-up" id="levelDesc">
+                <span class="level-tag" id="levelTag">Level 1</span>
+                <span id="levelDescText">识别古文字对应的现代字头和书体类型</span>
+            </div>
+
+            <!-- L1-L3 Content: Example Grid -->
+            <div class="demo-content fade-up" id="demoContent"></div>
+
+            <!-- L4 Content: Evolution Chains -->
+            <div class="evolution-content fade-up" id="evolutionContent" style="display:none;"></div>
         </div>
     </section>
 
@@ -637,79 +937,149 @@
 
     <script>
         // ==================== DATA ====================
-        let allData = [];
-        let filteredData = [];
-        let currentPage = 1;
-        const itemsPerPage = 12;
+        let vqaData = null;
+        let currentLevel = 'l1';
+
+        const taskNames = {
+            headword: '字头识别',
+            script: '字体识别',
+            structure: '结构分析',
+            components: '构件分析',
+            function: '构件功能',
+            etymology: '造字法分析',
+            meaning: '本义追溯',
+            evolution: '字形演变',
+            analysis: '综合分析'
+        };
+
+        const levelDesc = {
+            l1: { tag: 'Level 1', text: '识别古文字对应的现代字头和书体类型' },
+            l2: { tag: 'Level 2', text: '分析汉字的形体结构、构件组成与功能' },
+            l3: { tag: 'Level 3', text: '追溯造字本义，判断六书归属' },
+            l4: { tag: 'Level 4', text: '梳理汉字从甲骨文到楷书的形体递变过程' }
+        };
 
         async function loadData() {
             try {
                 const response = await fetch('data/vqa_data.json');
-                allData = await response.json();
-                filteredData = [...allData];
-                renderVQA();
+                vqaData = await response.json();
+                renderLevel('l1');
             } catch (error) {
                 console.error('Failed to load VQA data:', error);
-                document.getElementById('vqaGrid').innerHTML =
-                    '<p style="text-align:center;color:var(--text-secondary);grid-column:1/-1;">Failed to load data. Please check the console for details.</p>';
+                document.getElementById('demoContent').innerHTML =
+                    '<p style="text-align:center;color:var(--text-secondary);">Failed to load data.</p>';
             }
         }
 
-        // ==================== RENDER ====================
-        function renderVQA() {
-            const grid = document.getElementById('vqaGrid');
-            const pagination = document.getElementById('vqaPagination');
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const pageData = filteredData.slice(start, end);
+        // ==================== ANSWER HIGHLIGHT ====================
+        function highlightAnswer(text, task) {
+            // Highlight key terms based on task type
+            const patterns = {
+                script: [/甲骨文/g, /金文/g, /篆书/g, /隶书/g, /楷书/g, /草书/g, /古文/g],
+                headword: [],
+                structure: [/独体/g, /左右/g, /上下/g, /⿰/g, /⿱/g, /⿴/g, /合体/g],
+                components: [/表意/g, /表音/g, /功能/g, /构件/g, /演变类型/g],
+                function: [/表意/g, /表音/g, /承担/g, /功能/g],
+                etymology: [/象形字/g, /指事字/g, /会意字/g, /形声字/g, /假借字/g, /转注字/g, /六书/g],
+                meaning: [/本义/g, /初义/g, /原始语义/g],
+                evolution: [/甲骨文/g, /金文/g, /篆文/g, /隶变/g, /楷书/g, /简化/g, /讹变/g],
+                analysis: [/造字法/g, /结构/g, /构件/g, /本义/g, /演变/g, /甲骨文/g, /篆文/g, /隶变/g]
+            };
+            let html = text.replace(/\n/g, '<br>');
+            const clsMap = {
+                script: 'hl-script', structure: 'hl-structure', components: 'hl-component',
+                function: 'hl-component', etymology: 'hl-etymology', meaning: 'hl-meaning',
+                evolution: 'hl-script', analysis: 'hl-etymology'
+            };
+            const cls = clsMap[task] || 'hl-script';
+            const seen = new Set();
+            for (const p of (patterns[task] || [])) {
+                const key = p.source;
+                if (seen.has(key)) continue;
+                seen.add(key);
+                html = html.replace(p, m => `<span class="${cls}">${m}</span>`);
+            }
+            return html;
+        }
 
-            grid.innerHTML = pageData.map(item => `
-                <div class="vqa-card">
-                    <img src="${item.image}" alt="${item.answer}" loading="lazy" onclick="openModal('${item.image}')">
-                    <div class="vqa-card-body">
-                        <div class="vqa-question">${item.question}</div>
-                        <div class="vqa-answer"><i class="fas fa-check-circle"></i> ${item.answer}</div>
+        // ==================== RENDER LEVEL ====================
+        function renderLevel(levelId) {
+            currentLevel = levelId;
+            const level = vqaData.levels.find(l => l.id === levelId);
+            const desc = levelDesc[levelId];
+
+            // Update tabs
+            document.querySelectorAll('.level-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.level === levelId);
+            });
+
+            // Update description
+            document.getElementById('levelTag').textContent = desc.tag;
+            document.getElementById('levelDescText').textContent = desc.text;
+
+            if (levelId === 'l4') {
+                document.getElementById('demoContent').style.display = 'none';
+                document.getElementById('evolutionContent').style.display = 'block';
+                renderEvolution(level);
+            } else {
+                document.getElementById('demoContent').style.display = 'block';
+                document.getElementById('evolutionContent').style.display = 'none';
+                renderExamples(level.examples);
+            }
+
+            // Re-trigger fade
+            const visible = document.querySelector('.demo-content[style*="block"], .evolution-content[style*="block"]');
+            if (visible) {
+                visible.classList.remove('visible');
+                setTimeout(() => visible.classList.add('visible'), 50);
+            }
+        }
+
+        function renderExamples(examples) {
+            const container = document.getElementById('demoContent');
+            container.innerHTML = `<div class="demo-grid">${examples.map(ex => `
+                <div class="demo-card">
+                    <div class="demo-card-img-wrap">
+                        <span class="char-badge">${ex.character}</span>
+                        <span class="script-badge">${ex.script}</span>
+                        <img src="${ex.image}" alt="${ex.character}" loading="lazy" onclick="openModal('${ex.image}')">
+                    </div>
+                    <div class="demo-card-body">
+                        <div class="demo-question">${ex.question}</div>
+                        <div class="demo-answer">${highlightAnswer(ex.answer, ex.task)}</div>
+                        <span class="task-tag">${taskNames[ex.task] || ex.task}</span>
                     </div>
                 </div>
-            `).join('');
-
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            pagination.innerHTML = `
-                <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <span>Page ${currentPage} of ${totalPages}</span>
-                <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            `;
-
-            // Re-trigger fade animation
-            grid.classList.remove('visible');
-            setTimeout(() => grid.classList.add('visible'), 50);
+            `).join('')}</div>`;
         }
 
-        function changePage(page) {
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            if (page < 1 || page > totalPages) return;
-            currentPage = page;
-            renderVQA();
-            document.getElementById('vqa').scrollIntoView({ behavior: 'smooth' });
+        function renderEvolution(level) {
+            const container = document.getElementById('evolutionContent');
+            container.innerHTML = level.evolution_chains.map(chain => {
+                const stagesHtml = chain.stages.map((s, i) => `
+                    <div class="evolution-stage">
+                        <div class="evolution-stage-img" onclick="openModal('${s.image}')">
+                            <img src="${s.image}" alt="${chain.character} ${s.script}" loading="lazy">
+                        </div>
+                        <span class="evolution-stage-label">${s.script}</span>
+                    </div>
+                    ${i < chain.stages.length - 1 ? '<div class="evolution-arrow"><i class="fas fa-chevron-right"></i></div>' : ''}
+                `).join('');
+
+                return `
+                <div class="evolution-chain fade-up">
+                    <div class="evolution-chain-title">${chain.character}</div>
+                    <div class="evolution-chain-subtitle">${chain.scripts.join(' → ')}</div>
+                    <div class="evolution-timeline">${stagesHtml}</div>
+                    <div class="evolution-desc">${highlightAnswer(chain.evolution.answer, 'evolution')}</div>
+                </div>`;
+            }).join('');
         }
 
-        // ==================== FILTER ====================
-        document.querySelectorAll('.vqa-filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.vqa-filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                if (filter === 'all') {
-                    filteredData = [...allData];
-                } else {
-                    filteredData = allData.filter(item => item.answer === filter);
-                }
-                currentPage = 1;
-                renderVQA();
+        // ==================== LEVEL TABS ====================
+        document.querySelectorAll('.level-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                renderLevel(tab.dataset.level);
             });
         });
 
