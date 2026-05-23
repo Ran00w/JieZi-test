@@ -759,6 +759,121 @@
         .evolution-desc .hl-meaning { color: #34d399; font-weight: 600; }
         .evolution-desc .hl-etymology { color: #f59e0b; font-weight: 600; }
 
+        /* ========== EVOLUTION HOVER EFFECT ========== */
+        .evolution-timeline:hover .evolution-stage-img {
+            opacity: 0.35;
+            transform: scale(0.92);
+            filter: grayscale(0.4);
+        }
+        .evolution-timeline:hover .evolution-stage-label {
+            opacity: 0.4;
+        }
+        .evolution-timeline:hover .evolution-arrow {
+            opacity: 0.15;
+        }
+        .evolution-stage:hover .evolution-stage-img {
+            opacity: 1 !important;
+            transform: scale(1.08) !important;
+            filter: grayscale(0) !important;
+            border-color: rgba(79, 143, 255, 0.5) !important;
+            box-shadow: 0 0 30px var(--glow-blue), 0 8px 32px rgba(0,0,0,0.4) !important;
+        }
+        .evolution-stage:hover .evolution-stage-label {
+            opacity: 1 !important;
+            background: rgba(79, 143, 255, 0.15);
+            border-color: rgba(79, 143, 255, 0.3);
+            color: var(--accent-blue);
+        }
+        .evolution-stage-img, .evolution-stage-label, .evolution-arrow {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ========== COMPONENT PANEL ========== */
+        .component-panel {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+        .component-panel-header {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .component-panel-header i {
+            color: var(--accent-purple);
+        }
+        .component-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .component-tag {
+            padding: 6px 12px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .component-tag:hover {
+            background: rgba(139, 92, 246, 0.18);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-1px);
+        }
+        .component-tag.active {
+            background: linear-gradient(135deg, rgba(79, 143, 255, 0.15), rgba(139, 92, 246, 0.15));
+            border-color: rgba(79, 143, 255, 0.4);
+            box-shadow: 0 2px 10px var(--glow-purple);
+        }
+        .component-tag .tag-function {
+            font-size: 0.7rem;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.06);
+            color: var(--accent-cyan);
+        }
+        .component-detail {
+            margin-top: 12px;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            display: none;
+        }
+        .component-detail.show {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+        .component-detail .detail-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .component-detail .detail-row:last-child {
+            margin-bottom: 0;
+        }
+        .component-detail .detail-label {
+            color: var(--accent-purple);
+            font-weight: 500;
+            min-width: 70px;
+            flex-shrink: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 768px) {
             .evolution-arrow { display: none; }
             .evolution-timeline { gap: 12px; }
@@ -1035,9 +1150,65 @@
             }
         }
 
+        // ==================== COMPONENT PARSER ====================
+        function parseComponents(answer) {
+            const components = [];
+            // Match patterns like: 1. 构件X：功能=...；演变类型=...；解释=...
+            const regex = /(?:\d+)[\.\s]*构件\s*([^：:]+)[：:]\s*功能=([^；;]+)[；;]\s*演变类型=([^；;]+)[；;]\s*解释=([^；;\n]+)/g;
+            let match;
+            while ((match = regex.exec(answer)) !== null) {
+                components.push({
+                    name: match[1].trim(),
+                    function: match[2].trim(),
+                    evolution: match[3].trim(),
+                    explanation: match[4].trim()
+                });
+            }
+            return components;
+        }
+
+        function renderComponentPanel(ex, cardIndex) {
+            const components = parseComponents(ex.answer);
+            if (components.length === 0) return '';
+            const tagsHtml = components.map((c, i) => `
+                <span class="component-tag" data-card="${cardIndex}" data-comp="${i}" onclick="toggleComponent(${cardIndex}, ${i})">
+                    ${c.name}
+                    <span class="tag-function">${c.function}</span>
+                </span>
+            `).join('');
+            const detailsHtml = components.map((c, i) => `
+                <div class="component-detail" id="comp-detail-${cardIndex}-${i}">
+                    <div class="detail-row"><span class="detail-label">构件</span><span>${c.name}</span></div>
+                    <div class="detail-row"><span class="detail-label">功能</span><span class="hl-component">${c.function}</span></div>
+                    <div class="detail-row"><span class="detail-label">演变</span><span>${c.evolution}</span></div>
+                    <div class="detail-row"><span class="detail-label">解释</span><span>${c.explanation}</span></div>
+                </div>
+            `).join('');
+            return `
+                <div class="component-panel">
+                    <div class="component-panel-header"><i class="fas fa-puzzle-piece"></i> 构件分析 (${components.length})</div>
+                    <div class="component-tags">${tagsHtml}</div>
+                    ${detailsHtml}
+                </div>
+            `;
+        }
+
+        window.toggleComponent = function(cardIndex, compIndex) {
+            const tag = document.querySelector(`.component-tag[data-card="${cardIndex}"][data-comp="${compIndex}"]`);
+            const detail = document.getElementById(`comp-detail-${cardIndex}-${compIndex}`);
+            const isActive = tag.classList.contains('active');
+            // Close all in this card
+            document.querySelectorAll(`.component-tag[data-card="${cardIndex}"]`).forEach(t => t.classList.remove('active'));
+            document.querySelectorAll(`.component-detail[id^="comp-detail-${cardIndex}-"]`).forEach(d => d.classList.remove('show'));
+            if (!isActive) {
+                tag.classList.add('active');
+                detail.classList.add('show');
+            }
+        };
+
         function renderExamples(examples) {
             const container = document.getElementById('demoContent');
-            container.innerHTML = `<div class="demo-grid">${examples.map(ex => `
+            container.innerHTML = `<div class="demo-grid">${examples.map((ex, idx) => `
                 <div class="demo-card">
                     <div class="demo-card-img-wrap">
                         <span class="char-badge">${ex.character}</span>
@@ -1047,6 +1218,7 @@
                     <div class="demo-card-body">
                         <div class="demo-question">${ex.question}</div>
                         <div class="demo-answer">${highlightAnswer(ex.answer, ex.task)}</div>
+                        ${ex.task === 'components' ? renderComponentPanel(ex, idx) : ''}
                         <span class="task-tag">${taskNames[ex.task] || ex.task}</span>
                     </div>
                 </div>
