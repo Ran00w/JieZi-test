@@ -49,7 +49,7 @@
         {
           "id": "山_隶书_3::vqa::glyph",
           "image": "images/img_00005.jpg",
-          "character": "山",
+          "character": "ɽ",
           "script": "隶书",
           "task": "script",
           "question": "请说明图中文字的字形类别。",
@@ -58,7 +58,7 @@
         {
           "id": "山_楷书_5::vqa::glyph",
           "image": "images/img_00006.png",
-          "character": "山",
+          "character": "ɽ",
           "script": "楷书",
           "task": "script",
           "question": "该图像呈现的是何种字形？",
@@ -161,7 +161,7 @@
         {
           "id": "水_篆书_2::vqa::components_full",
           "image": "images/img_00016.jpg",
-          "character": "水",
+          "character": "ˮ",
           "script": "篆书",
           "task": "components",
           "question": "依据构形学原理，请系统说明该字各构件的功能属性与历史演变。",
@@ -197,7 +197,7 @@
         {
           "id": "鹿_甲骨文_0::vqa::components_full",
           "image": "images/img_00019.jpg",
-          "character": "鹿",
+          "character": "¹",
           "script": "甲骨文",
           "task": "components",
           "question": "请详细列出该字的全部构件，并逐一说明其功能、演变类型及构字解释。",
@@ -233,7 +233,7 @@
         {
           "id": "鹿_隶书_3::vqa::components_full",
           "image": "images/img_00023.jpg",
-          "character": "鹿",
+          "character": "¹",
           "script": "隶书",
           "task": "components",
           "question": "该字由哪些构件组成？各构件在构字中承担何种功能，经历了怎样的演变？",
@@ -254,7 +254,7 @@
         {
           "id": "鹿_甲骨文_0::vqa::benyi",
           "image": "images/img_00019.jpg",
-          "character": "鹿",
+          "character": "¹",
           "script": "甲骨文",
           "task": "meaning",
           "question": "该字的字源本义是什么？",
@@ -272,7 +272,7 @@
         {
           "id": "鹿_草书_4::vqa::benyi",
           "image": "images/img_00025.jpg",
-          "character": "鹿",
+          "character": "¹",
           "script": "草书",
           "task": "meaning",
           "question": "该字的字源本义是什么？",
@@ -317,7 +317,7 @@
         {
           "id": "山_甲骨文_0::vqa::benyi",
           "image": "images/img_00029.jpg",
-          "character": "山",
+          "character": "ɽ",
           "script": "甲骨文",
           "task": "meaning",
           "question": "依其构形分析，该字的初文意义为何？",
@@ -326,7 +326,7 @@
         {
           "id": "山_金文_1::vqa::benyi",
           "image": "images/img_00030.jpg",
-          "character": "山",
+          "character": "ɽ",
           "script": "金文",
           "task": "meaning",
           "question": "这个字的本义是什么？",
@@ -424,7 +424,7 @@
           ]
         },
         {
-          "character": "山",
+          "character": "ɽ",
           "scripts": [
             "甲骨文",
             "金文",
@@ -436,7 +436,7 @@
           "evolution": {
             "id": "山_金文_1::vqa::evolution",
             "image": "images/img_00030.jpg",
-            "character": "山",
+            "character": "ɽ",
             "script": "金文",
             "task": "evolution",
             "question": "请依时代先后，说明该字字形的演变轨迹。",
@@ -476,7 +476,7 @@
           ]
         },
         {
-          "character": "水",
+          "character": "ˮ",
           "scripts": [
             "甲骨文",
             "金文",
@@ -488,7 +488,7 @@
           "evolution": {
             "id": "水_篆书_2::vqa::evolution",
             "image": "images/img_00016.jpg",
-            "character": "水",
+            "character": "ˮ",
             "script": "篆书",
             "task": "evolution",
             "question": "请概述该字在甲骨文、篆书、隶书、楷书等不同书体阶段的面貌变迁。",
@@ -632,7 +632,7 @@
           ]
         },
         {
-          "character": "木",
+          "character": "ľ",
           "scripts": [
             "甲骨文",
             "金文",
@@ -644,7 +644,7 @@
           "evolution": {
             "id": "木_草书_4::vqa::evolution",
             "image": "images/img_00052.jpg",
-            "character": "木",
+            "character": "ľ",
             "script": "草书",
             "task": "evolution",
             "question": "该字在汉字发展史上经历了怎样的形体演变？",
@@ -788,7 +788,7 @@
           ]
         },
         {
-          "character": "鹿",
+          "character": "¹",
           "scripts": [
             "甲骨文",
             "金文",
@@ -800,7 +800,7 @@
           "evolution": {
             "id": "鹿_隶书_3::vqa::evolution",
             "image": "images/img_00023.jpg",
-            "character": "鹿",
+            "character": "¹",
             "script": "隶书",
             "task": "evolution",
             "question": "请依时代先后，说明该字字形的演变轨迹。",
