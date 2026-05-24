@@ -84,8 +84,8 @@
         nav ul li a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 16px;
             padding: 6px 14px;
             border-radius: 8px;
             transition: all 0.3s;
@@ -107,9 +107,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(242, 239, 227, 0.88), rgba(232, 227, 213, 0.72)),
-                        radial-gradient(ellipse at 50% 0%, rgba(184, 58, 46, 0.08), transparent 60%),
-                        radial-gradient(ellipse at 80% 50%, rgba(139, 69, 19, 0.06), transparent 50%);
+            background: linear-gradient(to bottom, rgba(242, 239, 227, 0.45), rgba(232, 227, 213, 0.35)),
+                        radial-gradient(ellipse at 50% 0%, rgba(184, 58, 46, 0.06), transparent 60%),
+                        radial-gradient(ellipse at 80% 50%, rgba(139, 69, 19, 0.04), transparent 50%);
             z-index: 0;
         }
         .hero-content {
@@ -956,7 +956,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-database"></i> Dataset & Benchmark</div>
+
                 <h1>JieZi: A Large-Scale <span class="highlight">Chinese Character</span> Understanding Dataset</h1>
                 <p class="subtitle">
                     【TODO: 请在此处填写副标题，简要描述项目的核心贡献，例如数据集的规模、任务类型等】
@@ -1175,7 +1175,11 @@
             const visible = document.querySelector('.demo-content[style*="block"], .evolution-content[style*="block"]');
             if (visible) {
                 visible.classList.remove('visible');
-                setTimeout(() => visible.classList.add('visible'), 50);
+                visible.querySelectorAll('.fade-up').forEach(el => el.classList.remove('visible'));
+                setTimeout(() => {
+                    visible.classList.add('visible');
+                    visible.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+                }, 50);
             }
         }
 
