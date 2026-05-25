@@ -11,18 +11,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --border-color: rgba(255, 255, 255, 0.06);
-            --text-primary: #e8e8ed;
-            --text-secondary: #8b8b9e;
-            --accent-blue: #4f8fff;
-            --accent-purple: #8b5cf6;
-            --accent-cyan: #22d3ee;
-            --accent-amber: #f59e0b;
-            --glow-blue: rgba(79, 143, 255, 0.15);
-            --glow-purple: rgba(139, 92, 246, 0.15);
+            --bg-primary: #F2EFE3;
+            --bg-secondary: #E8E3D5;
+            --bg-card: rgba(255, 255, 255, 0.55);
+            --border-color: rgba(80, 50, 30, 0.14);
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5248;
+            --accent-blue: #B83A2E;
+            --accent-purple: #8B4513;
+            --accent-cyan: #2E5C4F;
+            --accent-amber: #B8860B;
+            --glow-blue: rgba(184, 58, 46, 0.12);
+            --glow-purple: rgba(139, 69, 19, 0.12);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,6 +38,7 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
         }
 
         .container {
@@ -56,7 +57,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         header.scrolled {
-            background: rgba(10, 10, 15, 0.8);
+            background: rgba(242, 239, 227, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
@@ -72,7 +73,7 @@
             font-weight: 800;
             text-decoration: none;
             letter-spacing: -0.5px;
-            color: #fff;
+            color: var(--text-primary);
         }
         .logo span {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
@@ -88,15 +89,15 @@
         nav ul li a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 16px;
             padding: 6px 14px;
             border-radius: 8px;
             transition: all 0.3s;
         }
         nav ul li a:hover {
             color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(60, 40, 20, 0.06);
         }
 
         /* ========== HERO ========== */
@@ -105,15 +106,15 @@
             padding: 140px 0 160px;
             overflow: hidden;
             text-align: center;
-            background: url('docs/assets/hero_background.jpg') center/cover no-repeat;
+            background: url('docs/assets/hero_background_white.jpg') center/cover no-repeat;
         }
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(10, 10, 15, 0.75), rgba(10, 10, 15, 0.55)),
-                        radial-gradient(ellipse at 50% 0%, rgba(79, 143, 255, 0.12), transparent 60%),
-                        radial-gradient(ellipse at 80% 50%, rgba(139, 92, 246, 0.08), transparent 50%);
+            background: linear-gradient(to bottom, rgba(242, 239, 227, 0.45), rgba(232, 227, 213, 0.35)),
+                        radial-gradient(ellipse at 50% 0%, rgba(184, 58, 46, 0.06), transparent 60%),
+                        radial-gradient(ellipse at 80% 50%, rgba(139, 69, 19, 0.04), transparent 50%);
             z-index: 0;
         }
         .hero-content {
@@ -127,8 +128,8 @@
             align-items: center;
             gap: 8px;
             padding: 6px 16px;
-            background: rgba(79, 143, 255, 0.1);
-            border: 1px solid rgba(79, 143, 255, 0.2);
+            background: rgba(184, 58, 46, 0.08);
+            border: 1px solid rgba(184, 58, 46, 0.2);
             border-radius: 100px;
             font-size: 13px;
             font-weight: 500;
@@ -152,8 +153,9 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 24px;
-            letter-spacing: -2px;
-            color: #fff;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            font-family: 'Noto Serif SC', serif;
         }
         .hero h1 .highlight {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
@@ -190,7 +192,7 @@
         }
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: #fff;
+            color: #F2EFE3;
             box-shadow: 0 4px 20px var(--glow-blue);
         }
         .btn-primary:hover {
@@ -198,13 +200,13 @@
             box-shadow: 0 8px 30px var(--glow-blue);
         }
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(60, 40, 20, 0.04);
             color: var(--text-primary);
             border: 1px solid var(--border-color);
         }
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(60, 40, 20, 0.08);
+            border-color: rgba(80, 50, 30, 0.2);
         }
 
         /* ========== SECTIONS ========== */
@@ -220,7 +222,18 @@
             font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 16px;
-            color: #fff;
+            color: var(--text-primary);
+            font-family: 'Noto Serif SC', serif;
+            letter-spacing: 2px;
+        }
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            margin: 12px auto 0;
+            border-radius: 2px;
         }
         .section-title p {
             color: var(--text-secondary);
@@ -238,6 +251,7 @@
             font-size: 1.05rem;
             line-height: 1.8;
             color: var(--text-secondary);
+            box-shadow: inset 0 0 40px rgba(139, 69, 19, 0.03);
         }
         .abstract-box p {
             margin-bottom: 16px;
@@ -260,11 +274,25 @@
             padding: 32px 24px;
             text-align: center;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--accent-blue);
+            opacity: 0.3;
+            border-radius: 0 0 2px 2px;
         }
         .stat-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-color: rgba(80, 50, 30, 0.2);
+            box-shadow: 0 8px 32px rgba(60, 40, 20, 0.12);
         }
         .stat-number {
             font-size: 2.8rem;
@@ -294,7 +322,7 @@
             padding: 8px 20px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(60, 40, 20, 0.04);
             color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
@@ -302,8 +330,8 @@
             transition: all 0.3s;
         }
         .vqa-filter-btn:hover, .vqa-filter-btn.active {
-            background: rgba(79, 143, 255, 0.1);
-            border-color: rgba(79, 143, 255, 0.3);
+            background: rgba(184, 58, 46, 0.08);
+            border-color: rgba(184, 58, 46, 0.3);
             color: var(--accent-blue);
         }
         .vqa-grid {
@@ -320,14 +348,14 @@
         }
         .vqa-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(80, 50, 30, 0.18);
+            box-shadow: 0 12px 40px rgba(60, 40, 20, 0.1);
         }
         .vqa-card img {
             width: 100%;
             height: 200px;
             object-fit: contain;
-            background: #0d0d12;
+            background: #E8E3D5;
             cursor: pointer;
             transition: transform 0.3s;
         }
@@ -367,7 +395,7 @@
             height: 40px;
             border-radius: 10px;
             border: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(60, 40, 20, 0.04);
             color: var(--text-secondary);
             font-size: 16px;
             cursor: pointer;
@@ -377,8 +405,8 @@
             justify-content: center;
         }
         .vqa-pagination button:hover:not(:disabled) {
-            background: rgba(79, 143, 255, 0.1);
-            border-color: rgba(79, 143, 255, 0.3);
+            background: rgba(184, 58, 46, 0.08);
+            border-color: rgba(184, 58, 46, 0.3);
             color: var(--accent-blue);
         }
         .vqa-pagination button:disabled {
@@ -416,7 +444,7 @@
             padding: 8px 16px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(60, 40, 20, 0.06);
             color: var(--text-secondary);
             font-size: 13px;
             font-weight: 500;
@@ -427,8 +455,8 @@
             gap: 6px;
         }
         .copy-btn:hover {
-            background: rgba(79, 143, 255, 0.1);
-            border-color: rgba(79, 143, 255, 0.3);
+            background: rgba(184, 58, 46, 0.08);
+            border-color: rgba(184, 58, 46, 0.3);
             color: var(--accent-blue);
         }
 
@@ -439,6 +467,7 @@
             text-align: center;
             color: var(--text-secondary);
             font-size: 14px;
+            background: rgba(255,255,255,0.3);
         }
         footer a {
             color: var(--text-secondary);
@@ -453,7 +482,7 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(30, 25, 20, 0.88);
             backdrop-filter: blur(10px);
             z-index: 2000;
             display: flex;
@@ -480,9 +509,9 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
+            border: 1px solid rgba(242, 239, 227, 0.3);
+            background: rgba(242, 239, 227, 0.08);
+            color: #F2EFE3;
             font-size: 24px;
             cursor: pointer;
             display: flex;
@@ -491,7 +520,7 @@
             transition: all 0.3s;
         }
         .modal-close:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(242, 239, 227, 0.15);
         }
 
         /* ========== LEVEL TABS ========== */
@@ -517,12 +546,12 @@
             min-width: 140px;
         }
         .level-tab:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(80, 50, 30, 0.2);
+            background: rgba(60, 40, 20, 0.04);
         }
         .level-tab.active {
-            background: linear-gradient(135deg, rgba(79, 143, 255, 0.15), rgba(139, 92, 246, 0.15));
-            border-color: rgba(79, 143, 255, 0.4);
+            background: linear-gradient(135deg, rgba(184, 58, 46, 0.1), rgba(139, 69, 19, 0.1));
+            border-color: rgba(184, 58, 46, 0.4);
             color: var(--text-primary);
             box-shadow: 0 4px 20px var(--glow-blue);
         }
@@ -555,8 +584,8 @@
         .level-tag {
             display: inline-block;
             padding: 4px 12px;
-            background: rgba(79, 143, 255, 0.1);
-            border: 1px solid rgba(79, 143, 255, 0.25);
+            background: rgba(184, 58, 46, 0.08);
+            border: 1px solid rgba(184, 58, 46, 0.25);
             border-radius: 6px;
             color: var(--accent-blue);
             font-size: 0.8rem;
@@ -582,13 +611,13 @@
         }
         .demo-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(80, 50, 30, 0.18);
+            box-shadow: 0 12px 40px rgba(60, 40, 20, 0.1);
         }
         .demo-card-img-wrap {
             position: relative;
             padding: 20px;
-            background: #0d0d12;
+            background: #E8E3D5;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -612,13 +641,13 @@
             height: 36px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: #fff;
+            color: #F2EFE3;
             font-size: 1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(60,40,20,0.2);
             font-family: 'Noto Serif SC', serif;
         }
         .script-badge {
@@ -626,12 +655,12 @@
             top: 12px;
             right: 12px;
             padding: 4px 10px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(40, 30, 20, 0.6);
             border-radius: 6px;
             font-size: 0.75rem;
             color: var(--accent-cyan);
             font-weight: 500;
-            border: 1px solid rgba(34, 211, 238, 0.2);
+            border: 1px solid rgba(46, 92, 79, 0.25);
         }
         .demo-card-body {
             padding: 20px;
@@ -678,13 +707,13 @@
             transition: all 0.3s;
         }
         .evolution-chain:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(80, 50, 30, 0.18);
+            box-shadow: 0 12px 40px rgba(60, 40, 20, 0.1);
         }
         .evolution-chain-title {
             font-size: 1.6rem;
             font-weight: 800;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 8px;
             text-align: center;
             font-family: 'Noto Serif SC', serif;
@@ -716,7 +745,7 @@
         .evolution-stage-img {
             width: 100%;
             aspect-ratio: 1;
-            background: #0d0d12;
+            background: #E8E3D5;
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -766,27 +795,27 @@
 
         /* ========== EVOLUTION HOVER EFFECT ========== */
         .evolution-timeline:hover .evolution-stage-img {
-            opacity: 0.35;
+            opacity: 0.45;
             transform: scale(0.92);
-            filter: grayscale(0.4);
+            filter: grayscale(0.3);
         }
         .evolution-timeline:hover .evolution-stage-label {
-            opacity: 0.4;
+            opacity: 0.5;
         }
         .evolution-timeline:hover .evolution-arrow {
-            opacity: 0.15;
+            opacity: 0.2;
         }
         .evolution-stage:hover .evolution-stage-img {
             opacity: 1 !important;
             transform: scale(1.08) !important;
             filter: grayscale(0) !important;
-            border-color: rgba(79, 143, 255, 0.5) !important;
-            box-shadow: 0 0 30px var(--glow-blue), 0 8px 32px rgba(0,0,0,0.4) !important;
+            border-color: rgba(184, 58, 46, 0.45) !important;
+            box-shadow: 0 0 30px var(--glow-blue), 0 8px 32px rgba(60,40,20,0.15) !important;
         }
         .evolution-stage:hover .evolution-stage-label {
             opacity: 1 !important;
-            background: rgba(79, 143, 255, 0.15);
-            border-color: rgba(79, 143, 255, 0.3);
+            background: rgba(184, 58, 46, 0.12);
+            border-color: rgba(184, 58, 46, 0.3);
             color: var(--accent-blue);
         }
         .evolution-stage-img, .evolution-stage-label, .evolution-arrow {
@@ -817,8 +846,8 @@
         }
         .component-tag {
             padding: 6px 12px;
-            background: rgba(139, 92, 246, 0.08);
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            background: rgba(139, 69, 19, 0.08);
+            border: 1px solid rgba(139, 69, 19, 0.2);
             border-radius: 8px;
             font-size: 0.85rem;
             color: var(--text-primary);
@@ -829,13 +858,13 @@
             gap: 6px;
         }
         .component-tag:hover {
-            background: rgba(139, 92, 246, 0.18);
-            border-color: rgba(139, 92, 246, 0.4);
+            background: rgba(139, 69, 19, 0.15);
+            border-color: rgba(139, 69, 19, 0.35);
             transform: translateY(-1px);
         }
         .component-tag.active {
-            background: linear-gradient(135deg, rgba(79, 143, 255, 0.15), rgba(139, 92, 246, 0.15));
-            border-color: rgba(79, 143, 255, 0.4);
+            background: linear-gradient(135deg, rgba(184, 58, 46, 0.12), rgba(139, 69, 19, 0.12));
+            border-color: rgba(184, 58, 46, 0.35);
             box-shadow: 0 2px 10px var(--glow-purple);
         }
         .component-tag .tag-function {
@@ -1576,6 +1605,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <h1>JieZi: A Large-Scale <span class="highlight">Expert-Audited</span> Dataset and Benchmark for Ancient Chinese Character Exegesis</h1>
                 <h1>JieZi: A Large-Scale Expert-Audited Dataset and Benchmark for Ancient Chinese Character Exegesis</h1>
                 <p class="subtitle">
                     AI-powered exegesis of ancient Chinese characters
@@ -1592,7 +1622,7 @@
                     </a>
                 </div>
                 <div style="margin-top: 48px;">
-                    <img src="docs/figures/paper_main_figure_v3.png" alt="JieZi Framework" style="max-width: 90%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+                    <img src="docs/figures/paper_main_figure_v3.png" alt="JieZi Framework" style="max-width: 90%; border-radius: 16px; border: 1px solid rgba(60,40,20,0.1); box-shadow: 0 20px 60px rgba(60,40,20,0.2);">
                 </div>
             </div>
         </div>
@@ -1876,7 +1906,11 @@
             const visible = document.querySelector('.demo-content[style*="block"], .evolution-content[style*="block"]');
             if (visible) {
                 visible.classList.remove('visible');
-                setTimeout(() => visible.classList.add('visible'), 50);
+                visible.querySelectorAll('.fade-up').forEach(el => el.classList.remove('visible'));
+                setTimeout(() => {
+                    visible.classList.add('visible');
+                    visible.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+                }, 50);
             }
         }
 

@@ -81,6 +81,53 @@ The collated and annotated dataset presented in this case is for **non-commercia
 
 ## 🚀 Usage
 
+### Install
+
+```bash
+pip install -r JieZi-bench/requirements-eval.txt
+```
+
+### Download benchmark data
+
+Download `Jiezi-bench/` from [Hugging Face](https://huggingface.co/datasets/Ran0/JieZi) and place it at `JieZi-bench/Jiezi-bench/` (or update `data_root` in the run config).
+
+### Configure model
+
+Copy and edit a model config:
+
+```bash
+cp JieZi-bench/configs/models/gpt_5_4_api.example.yaml JieZi-bench/configs/models/my_model.yaml
+```
+
+For cloud APIs, set `base_url`, `api_key_env`, and `model`. For local vLLM models, edit `qwen3_5_4b_local.yaml` and set `model_path`.
+
+### Run evaluation
+
+```bash
+python JieZi-bench/runners/run_eval.py \
+  --run-config JieZi-bench/configs/runs/ancient_char_exegesis.yaml \
+  --model-config JieZi-bench/configs/models/my_model.yaml
+```
+
+Smoke test (2 samples):
+
+```bash
+python JieZi-bench/runners/run_eval.py \
+  --run-config JieZi-bench/configs/runs/ancient_char_exegesis.yaml \
+  --model-config JieZi-bench/configs/models/my_model.yaml \
+  --limit 2
+```
+
+Results are saved under `JieZi-bench/runs/ancient_char_exegesis/<timestamp>/`. See `metrics/summary.json` for aggregate scores.
+
+## 📝 Citation
+
+Coming soon.
+
+## ☎️ Contact
+
+If you have any questions, please contact us at [eeran0@mail.scut.edu.cn](mailto:eeran0@mail.scut.edu.cn).
+
 Coming soon.
 
 ## 📝 Citation
