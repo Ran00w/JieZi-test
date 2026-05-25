@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JieZi - A Large-Scale Chinese Character Understanding Dataset</title>
+    <title>JieZi: A Large-Scale Expert-Audited Dataset and Benchmark for Ancient Chinese Character Exegesis</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +26,11 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Noto Serif SC', sans-serif;
@@ -932,6 +937,647 @@
             .vqa-grid { grid-template-columns: 1fr; }
             nav ul { display: none; }
         }
+
+        /* ========== CLASSICAL MANUSCRIPT THEME OVERRIDES ========== */
+        :root {
+            --bg-primary: #f8f3e8;
+            --bg-secondary: #fffaf1;
+            --bg-card: rgba(255, 252, 244, 0.86);
+            --border-color: rgba(100, 73, 43, 0.16);
+            --text-primary: #231d18;
+            --text-secondary: #675a4d;
+            --accent-blue: #9d1414;
+            --accent-purple: #8f5f2a;
+            --accent-cyan: #1c6b63;
+            --accent-amber: #b47b2a;
+            --glow-blue: rgba(157, 20, 20, 0.16);
+            --glow-purple: rgba(143, 95, 42, 0.14);
+            --paper: #fffaf1;
+            --paper-deep: #efe2c9;
+            --ink: #231d18;
+            --muted-ink: #675a4d;
+            --seal-red: #9d1414;
+            --seal-red-dark: #750e0e;
+            --bronze: #8f5f2a;
+            --jade: #1c6b63;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+            background:
+                linear-gradient(90deg, rgba(100, 73, 43, 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
+                linear-gradient(180deg, rgba(100, 73, 43, 0.03) 1px, transparent 1px) 0 0 / 44px 44px,
+                linear-gradient(115deg, rgba(180, 123, 42, 0.08), transparent 38%),
+                linear-gradient(180deg, #fbf6ec 0%, #f4ead7 48%, #fffaf1 100%);
+            color: var(--ink);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(90deg, rgba(77, 51, 25, 0.025) 0 1px, transparent 1px 18px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 9px);
+            mix-blend-mode: multiply;
+        }
+
+        .container {
+            max-width: 1240px;
+        }
+
+        header {
+            background: rgba(255, 250, 241, 0.82);
+            border-bottom: 1px solid rgba(100, 73, 43, 0.15);
+            box-shadow: 0 8px 28px rgba(73, 46, 24, 0.07);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        header.scrolled {
+            background: rgba(255, 250, 241, 0.94);
+            border-bottom-color: rgba(157, 20, 20, 0.18);
+        }
+
+        .header-content {
+            height: 74px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            color: var(--ink);
+            font-size: 30px;
+            letter-spacing: 0;
+            font-weight: 800;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: 50% 0%;
+            transform: scale(1.18);
+            border: 1px solid rgba(157, 20, 20, 0.18);
+            box-shadow: 0 6px 16px rgba(73, 46, 24, 0.12);
+        }
+
+        .logo span {
+            color: var(--seal-red);
+            background: none;
+            -webkit-text-fill-color: currentColor;
+        }
+
+        nav ul {
+            gap: 4px;
+        }
+
+        nav ul li a {
+            color: var(--muted-ink);
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        nav ul li a:hover {
+            color: var(--seal-red);
+            background: rgba(157, 20, 20, 0.08);
+        }
+
+        .hero {
+            min-height: 92vh;
+            padding: 132px 0 86px;
+            background:
+                linear-gradient(180deg, rgba(255, 250, 241, 0.94) 0%, rgba(255, 250, 241, 0.74) 48%, rgba(35, 29, 24, 0.2) 100%),
+                linear-gradient(180deg, rgba(255, 250, 241, 0.68), rgba(248, 243, 232, 0.34)),
+                url('docs/assets/hero_background.jpg') center/cover no-repeat;
+            border-bottom: 1px solid rgba(100, 73, 43, 0.14);
+        }
+
+        .hero::before {
+            background:
+                linear-gradient(180deg, rgba(255, 250, 241, 0.95), rgba(255, 250, 241, 0.56) 56%, rgba(245, 233, 210, 0.12)),
+                repeating-linear-gradient(90deg, rgba(157, 20, 20, 0.055) 0 1px, transparent 1px 74px);
+        }
+
+        .hero-content {
+            max-width: 1040px;
+        }
+
+        .hero-badge {
+            background: rgba(255, 250, 241, 0.9);
+            border: 1px solid rgba(157, 20, 20, 0.2);
+            border-radius: 6px;
+            color: var(--seal-red);
+            box-shadow: 0 8px 24px rgba(73, 46, 24, 0.08);
+        }
+
+        .hero-badge::before {
+            background: var(--seal-red);
+            border-radius: 1px;
+            transform: rotate(45deg);
+        }
+
+        .hero h1 {
+            max-width: 920px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-wrap: balance;
+            overflow-wrap: anywhere;
+        }
+
+        .hero h1 .highlight {
+            color: var(--seal-red);
+            background: none;
+            -webkit-text-fill-color: currentColor;
+        }
+
+        .hero .subtitle {
+            color: var(--muted-ink);
+            max-width: 760px;
+        }
+
+        .btn {
+            border-radius: 6px;
+            min-height: 44px;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, var(--seal-red), var(--seal-red-dark));
+            color: #fffaf1;
+            border: 1px solid rgba(117, 14, 14, 0.28);
+            box-shadow: 0 10px 22px rgba(157, 20, 20, 0.18);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 14px 28px rgba(157, 20, 20, 0.24);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 250, 241, 0.76);
+            color: var(--ink);
+            border: 1px solid rgba(100, 73, 43, 0.18);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 247, 229, 0.98);
+            border-color: rgba(157, 20, 20, 0.26);
+            color: var(--seal-red);
+        }
+
+        .hero img {
+            background: rgba(255, 250, 241, 0.9);
+            border: 1px solid rgba(100, 73, 43, 0.18) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 24px 60px rgba(73, 46, 24, 0.16) !important;
+            display: block;
+            width: min(100%, 936px) !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            padding: 76px 0;
+        }
+
+        .section:nth-of-type(even) {
+            background: rgba(255, 250, 241, 0.5);
+            border-top: 1px solid rgba(100, 73, 43, 0.08);
+            border-bottom: 1px solid rgba(100, 73, 43, 0.08);
+        }
+
+        .section-title {
+            margin-bottom: 44px;
+        }
+
+        .section-title h2,
+        .evolution-chain-title {
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 72px;
+            height: 2px;
+            margin: 14px auto 0;
+            background: linear-gradient(90deg, transparent, var(--seal-red), transparent);
+        }
+
+        .section-title p,
+        .level-desc,
+        .stat-label,
+        .demo-answer,
+        .evolution-chain-subtitle,
+        footer {
+            color: var(--muted-ink);
+        }
+
+        .abstract-box,
+        .stat-card,
+        .vqa-card,
+        .citation-box,
+        .level-tab,
+        .demo-card,
+        .evolution-chain {
+            background:
+                linear-gradient(180deg, rgba(255, 252, 244, 0.96), rgba(252, 244, 230, 0.9));
+            border: 1px solid rgba(100, 73, 43, 0.16);
+            border-radius: 8px;
+            box-shadow: 0 14px 36px rgba(73, 46, 24, 0.08);
+        }
+
+        .abstract-box {
+            color: var(--muted-ink);
+            line-height: 1.88;
+            border-left: 4px solid var(--seal-red);
+        }
+
+        .stat-card:hover,
+        .vqa-card:hover,
+        .demo-card:hover,
+        .evolution-chain:hover {
+            border-color: rgba(157, 20, 20, 0.24);
+            box-shadow: 0 18px 42px rgba(73, 46, 24, 0.14);
+        }
+
+        .stat-number {
+            color: var(--seal-red);
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            font-weight: 700;
+        }
+
+        .script-timeline {
+            position: relative;
+            margin-top: 34px;
+            padding: 22px;
+            background:
+                linear-gradient(180deg, rgba(255, 252, 244, 0.96), rgba(252, 244, 230, 0.9));
+            border: 1px solid rgba(100, 73, 43, 0.16);
+            border-radius: 8px;
+            box-shadow: 0 14px 36px rgba(73, 46, 24, 0.08);
+            overflow-x: auto;
+        }
+
+        .script-timeline-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(118px, 1fr));
+            gap: 12px;
+            min-width: 940px;
+        }
+
+        .script-timeline-grid::before {
+            content: '';
+            position: absolute;
+            top: 58px;
+            left: 7%;
+            right: 7%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(157, 20, 20, 0.18), rgba(157, 20, 20, 0.62), rgba(157, 20, 20, 0.18));
+        }
+
+        .script-column {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-rows: 88px repeat(5, 78px);
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .script-era {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 4px;
+            padding-top: 2px;
+            text-align: center;
+        }
+
+        .script-era::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            margin-top: 5px;
+            border-radius: 50%;
+            background: var(--seal-red);
+            border: 3px solid var(--paper);
+            box-shadow: 0 0 0 1px rgba(157, 20, 20, 0.24);
+        }
+
+        .script-era-en {
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.15;
+        }
+
+        .script-era-cn {
+            color: var(--muted-ink);
+            font-size: 0.76rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .script-glyph {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            height: 78px;
+            padding: 8px;
+            background:
+                linear-gradient(180deg, rgba(246, 234, 210, 0.74), rgba(255, 250, 241, 0.96));
+            border: 1px solid rgba(100, 73, 43, 0.14);
+            border-radius: 8px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .script-glyph:hover {
+            transform: translateY(-2px);
+            border-color: rgba(157, 20, 20, 0.28);
+            box-shadow: 0 10px 24px rgba(73, 46, 24, 0.12);
+        }
+
+        .script-glyph img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            cursor: zoom-in;
+        }
+
+        .level-tabs {
+            align-items: stretch;
+        }
+
+        .level-tab {
+            border-radius: 8px;
+            gap: 8px;
+        }
+
+        .level-tab:hover {
+            border-color: rgba(157, 20, 20, 0.22);
+            background: rgba(255, 250, 241, 0.98);
+        }
+
+        .level-tab.active {
+            background: #fffaf1;
+            border-color: rgba(157, 20, 20, 0.42);
+            color: var(--ink);
+            box-shadow: inset 0 -3px 0 var(--seal-red), 0 14px 34px rgba(73, 46, 24, 0.1);
+        }
+
+        .level-tab .tab-num,
+        .level-tab.active .tab-num {
+            color: var(--seal-red);
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+        }
+
+        .level-tab .tab-text {
+            color: var(--muted-ink);
+        }
+
+        .level-tag,
+        .task-tag,
+        .evolution-stage-label {
+            background: rgba(157, 20, 20, 0.08);
+            border: 1px solid rgba(157, 20, 20, 0.16);
+            border-radius: 6px;
+            color: var(--seal-red);
+        }
+
+        .demo-card-img-wrap,
+        .vqa-card img,
+        .evolution-stage-img {
+            background:
+                linear-gradient(180deg, rgba(246, 234, 210, 0.84), rgba(255, 250, 241, 0.92));
+            border-color: rgba(100, 73, 43, 0.14);
+        }
+
+        .demo-card-img-wrap {
+            min-height: 198px;
+        }
+
+        .char-badge {
+            background: var(--seal-red);
+            border-radius: 6px;
+            color: #fffaf1;
+            box-shadow: 0 6px 16px rgba(157, 20, 20, 0.22);
+        }
+
+        .script-badge {
+            background: rgba(255, 250, 241, 0.92);
+            border: 1px solid rgba(28, 107, 99, 0.18);
+            border-radius: 6px;
+            color: var(--jade);
+        }
+
+        .demo-question,
+        .vqa-question {
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            font-weight: 600;
+        }
+
+        .demo-answer .hl-script,
+        .evolution-desc .hl-script {
+            color: var(--jade);
+        }
+
+        .demo-answer .hl-structure,
+        .component-detail .detail-label,
+        .component-panel-header i {
+            color: var(--bronze);
+        }
+
+        .demo-answer .hl-etymology,
+        .evolution-desc .hl-etymology {
+            color: #9c641c;
+        }
+
+        .demo-answer .hl-meaning,
+        .evolution-desc .hl-meaning {
+            color: #2f6f3e;
+        }
+
+        .demo-answer .hl-component {
+            color: var(--seal-red);
+        }
+
+        .evolution-desc,
+        .component-detail {
+            background: rgba(255, 250, 241, 0.72);
+            border: 1px solid rgba(100, 73, 43, 0.14);
+            border-radius: 8px;
+            color: var(--muted-ink);
+        }
+
+        .evolution-empty {
+            padding: 28px;
+            color: var(--muted-ink);
+            text-align: center;
+            background: rgba(255, 250, 241, 0.72);
+            border: 1px solid rgba(100, 73, 43, 0.14);
+            border-radius: 8px;
+        }
+
+        .evolution-arrow {
+            color: var(--seal-red);
+        }
+
+        .evolution-stage:hover .evolution-stage-img {
+            border-color: rgba(157, 20, 20, 0.42) !important;
+            box-shadow: 0 12px 26px rgba(73, 46, 24, 0.16) !important;
+        }
+
+        .evolution-stage:hover .evolution-stage-label {
+            background: rgba(157, 20, 20, 0.1);
+            border-color: rgba(157, 20, 20, 0.26);
+            color: var(--seal-red);
+        }
+
+        .component-panel {
+            border-top-color: rgba(100, 73, 43, 0.14);
+        }
+
+        .component-panel-header {
+            color: var(--muted-ink);
+        }
+
+        .component-tag {
+            background: rgba(143, 95, 42, 0.08);
+            border: 1px solid rgba(143, 95, 42, 0.18);
+            border-radius: 6px;
+            color: var(--ink);
+        }
+
+        .component-tag:hover,
+        .component-tag.active {
+            background: rgba(157, 20, 20, 0.08);
+            border-color: rgba(157, 20, 20, 0.24);
+            box-shadow: none;
+        }
+
+        .component-tag .tag-function {
+            background: rgba(28, 107, 99, 0.08);
+            color: var(--jade);
+        }
+
+        .citation-box pre {
+            color: var(--muted-ink);
+        }
+
+        .copy-btn,
+        .vqa-filter-btn,
+        .vqa-pagination button {
+            background: rgba(255, 250, 241, 0.86);
+            border: 1px solid rgba(100, 73, 43, 0.16);
+            border-radius: 6px;
+            color: var(--muted-ink);
+        }
+
+        .copy-btn:hover,
+        .vqa-filter-btn:hover,
+        .vqa-filter-btn.active,
+        .vqa-pagination button:hover:not(:disabled) {
+            background: rgba(157, 20, 20, 0.08);
+            border-color: rgba(157, 20, 20, 0.24);
+            color: var(--seal-red);
+        }
+
+        footer {
+            background: rgba(255, 250, 241, 0.74);
+            border-top-color: rgba(100, 73, 43, 0.14);
+        }
+
+        footer a,
+        footer a:hover {
+            color: var(--seal-red);
+        }
+
+        .modal-overlay {
+            background: rgba(35, 29, 24, 0.82);
+        }
+
+        .modal-overlay img {
+            background: var(--paper);
+            border: 1px solid rgba(255, 250, 241, 0.34);
+            border-radius: 8px;
+        }
+
+        .modal-close {
+            background: rgba(255, 250, 241, 0.12);
+            border-color: rgba(255, 250, 241, 0.24);
+        }
+
+        @media (max-width: 768px) {
+            .header-content { height: 60px; }
+            .logo { font-size: 25px; }
+            .logo-mark { width: 34px; height: 34px; }
+            .container { padding: 0 18px; }
+            .hero { min-height: auto; padding: 112px 0 54px; }
+            .hero h1 {
+                font-size: 1.55rem;
+                line-height: 1.18;
+                max-width: calc(100vw - 36px);
+                overflow-wrap: anywhere;
+            }
+            .hero .subtitle { font-size: 1rem; }
+            .hero img { max-width: 100% !important; }
+            .btn-group {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+                width: 100%;
+            }
+            .btn {
+                padding: 11px 18px;
+                min-width: 0;
+                width: 100%;
+                justify-content: center;
+            }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .stat-card { padding: 24px 14px; }
+            .abstract-box { padding: 28px 24px; }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 { font-size: 1.5rem; }
+            .btn {
+                font-size: 13px;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -939,7 +1585,10 @@
     <header id="mainHeader">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo"><span>JieZi</span></a>
+                <a href="#" class="logo">
+                    <img class="logo-mark" src="docs/assets/jiezi_logo_display.jpg" alt="JieZi logo">
+                    <span>JieZi</span>
+                </a>
                 <nav>
                     <ul>
                         <li><a href="#abstract">Abstract</a></li>
@@ -956,10 +1605,9 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-
-                <h1>JieZi: A Large-Scale <span class="highlight">Chinese Character</span> Understanding Dataset</h1>
+                <h1>JieZi: A Large-Scale <span class="highlight">Expert-Audited</span> Dataset and Benchmark for Ancient Chinese Character Exegesis</h1>
                 <p class="subtitle">
-                    【TODO: 请在此处填写副标题，简要描述项目的核心贡献，例如数据集的规模、任务类型等】
+                    AI-powered exegesis of ancient Chinese characters
                 </p>
                 <div class="btn-group">
                     <a href="#" class="btn btn-primary" target="_blank">
@@ -1014,8 +1662,89 @@
                     <div class="stat-label">Scripts</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">8,700+</div>
-                    <div class="stat-label">Characters</div>
+                    <div class="stat-number">13,000+</div>
+                    <div class="stat-label">Images</div>
+                </div>
+            </div>
+            <div class="script-timeline fade-up" aria-label="Ancient Chinese script timeline">
+                <div class="script-timeline-grid">
+                    <div class="script-column">
+                        <div class="script-era">
+                            <span class="script-era-en">OBI</span>
+                            <span class="script-era-cn">甲骨文</span>
+                        </div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/obi/01.png" alt="OBI sample 1" loading="lazy" onclick="openModal('docs/assets/ancient_chars/obi/01.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/obi/02.png" alt="OBI sample 2" loading="lazy" onclick="openModal('docs/assets/ancient_chars/obi/02.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/obi/03.png" alt="OBI sample 3" loading="lazy" onclick="openModal('docs/assets/ancient_chars/obi/03.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/obi/04.png" alt="OBI sample 4" loading="lazy" onclick="openModal('docs/assets/ancient_chars/obi/04.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/obi/05.png" alt="OBI sample 5" loading="lazy" onclick="openModal('docs/assets/ancient_chars/obi/05.png')"></div>
+                    </div>
+                    <div class="script-column">
+                        <div class="script-era">
+                            <span class="script-era-en">Bronze</span>
+                            <span class="script-era-cn">金文</span>
+                        </div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/bronze/01.png" alt="Bronze sample 1" loading="lazy" onclick="openModal('docs/assets/ancient_chars/bronze/01.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/bronze/02.png" alt="Bronze sample 2" loading="lazy" onclick="openModal('docs/assets/ancient_chars/bronze/02.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/bronze/03.png" alt="Bronze sample 3" loading="lazy" onclick="openModal('docs/assets/ancient_chars/bronze/03.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/bronze/04.png" alt="Bronze sample 4" loading="lazy" onclick="openModal('docs/assets/ancient_chars/bronze/04.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/bronze/05.png" alt="Bronze sample 5" loading="lazy" onclick="openModal('docs/assets/ancient_chars/bronze/05.png')"></div>
+                    </div>
+                    <div class="script-column">
+                        <div class="script-era">
+                            <span class="script-era-en">Warring state</span>
+                            <span class="script-era-cn">战国文字</span>
+                        </div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/warring-state/01.png" alt="Warring state sample 1" loading="lazy" onclick="openModal('docs/assets/ancient_chars/warring-state/01.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/warring-state/02.png" alt="Warring state sample 2" loading="lazy" onclick="openModal('docs/assets/ancient_chars/warring-state/02.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/warring-state/03.png" alt="Warring state sample 3" loading="lazy" onclick="openModal('docs/assets/ancient_chars/warring-state/03.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/warring-state/04.png" alt="Warring state sample 4" loading="lazy" onclick="openModal('docs/assets/ancient_chars/warring-state/04.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/warring-state/05.png" alt="Warring state sample 5" loading="lazy" onclick="openModal('docs/assets/ancient_chars/warring-state/05.png')"></div>
+                    </div>
+                    <div class="script-column">
+                        <div class="script-era">
+                            <span class="script-era-en">Seal</span>
+                            <span class="script-era-cn">篆书</span>
+                        </div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/seal/01.png" alt="Seal sample 1" loading="lazy" onclick="openModal('docs/assets/ancient_chars/seal/01.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/seal/02.png" alt="Seal sample 2" loading="lazy" onclick="openModal('docs/assets/ancient_chars/seal/02.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/seal/03.png" alt="Seal sample 3" loading="lazy" onclick="openModal('docs/assets/ancient_chars/seal/03.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/seal/04.png" alt="Seal sample 4" loading="lazy" onclick="openModal('docs/assets/ancient_chars/seal/04.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/seal/05.png" alt="Seal sample 5" loading="lazy" onclick="openModal('docs/assets/ancient_chars/seal/05.png')"></div>
+                    </div>
+                    <div class="script-column">
+                        <div class="script-era">
+                            <span class="script-era-en">Clerical</span>
+                            <span class="script-era-cn">隶书</span>
+                        </div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/clerical/01.png" alt="Clerical sample 1" loading="lazy" onclick="openModal('docs/assets/ancient_chars/clerical/01.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/clerical/02.png" alt="Clerical sample 2" loading="lazy" onclick="openModal('docs/assets/ancient_chars/clerical/02.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/clerical/03.png" alt="Clerical sample 3" loading="lazy" onclick="openModal('docs/assets/ancient_chars/clerical/03.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/clerical/04.png" alt="Clerical sample 4" loading="lazy" onclick="openModal('docs/assets/ancient_chars/clerical/04.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/clerical/05.png" alt="Clerical sample 5" loading="lazy" onclick="openModal('docs/assets/ancient_chars/clerical/05.png')"></div>
+                    </div>
+                    <div class="script-column">
+                        <div class="script-era">
+                            <span class="script-era-en">Regular</span>
+                            <span class="script-era-cn">楷书</span>
+                        </div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/regular/01.png" alt="Regular sample 1" loading="lazy" onclick="openModal('docs/assets/ancient_chars/regular/01.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/regular/02.png" alt="Regular sample 2" loading="lazy" onclick="openModal('docs/assets/ancient_chars/regular/02.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/regular/03.png" alt="Regular sample 3" loading="lazy" onclick="openModal('docs/assets/ancient_chars/regular/03.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/regular/04.png" alt="Regular sample 4" loading="lazy" onclick="openModal('docs/assets/ancient_chars/regular/04.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/regular/05.png" alt="Regular sample 5" loading="lazy" onclick="openModal('docs/assets/ancient_chars/regular/05.png')"></div>
+                    </div>
+                    <div class="script-column">
+                        <div class="script-era">
+                            <span class="script-era-en">cursive</span>
+                            <span class="script-era-cn">草书</span>
+                        </div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/cursive/01.png" alt="Cursive sample 1" loading="lazy" onclick="openModal('docs/assets/ancient_chars/cursive/01.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/cursive/02.png" alt="Cursive sample 2" loading="lazy" onclick="openModal('docs/assets/ancient_chars/cursive/02.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/cursive/03.png" alt="Cursive sample 3" loading="lazy" onclick="openModal('docs/assets/ancient_chars/cursive/03.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/cursive/04.png" alt="Cursive sample 4" loading="lazy" onclick="openModal('docs/assets/ancient_chars/cursive/04.png')"></div>
+                        <div class="script-glyph"><img src="docs/assets/ancient_chars/cursive/05.png" alt="Cursive sample 5" loading="lazy" onclick="openModal('docs/assets/ancient_chars/cursive/05.png')"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1121,7 +1850,7 @@
             const patterns = {
                 script: [/甲骨文/g, /金文/g, /篆书/g, /隶书/g, /楷书/g, /草书/g, /古文/g],
                 headword: [],
-                structure: [/独体/g, /左右/g, /上下/g, /⿰/g, /⿱/g, /⿴/g, /合体/g],
+                structure: [/独体/g, /左右/g, /上下/g, /合体/g],
                 components: [/表意/g, /表音/g, /功能/g, /构件/g, /演变类型/g],
                 function: [/表意/g, /表音/g, /承担/g, /功能/g],
                 etymology: [/象形字/g, /指事字/g, /会意字/g, /形声字/g, /假借字/g, /转注字/g, /六书/g],
@@ -1151,6 +1880,7 @@
             currentLevel = levelId;
             const level = vqaData.levels.find(l => l.id === levelId);
             const desc = levelDesc[levelId];
+            if (!level || !desc) return;
 
             // Update tabs
             document.querySelectorAll('.level-tab').forEach(tab => {
@@ -1260,7 +1990,13 @@
 
         function renderEvolution(level) {
             const container = document.getElementById('evolutionContent');
-            container.innerHTML = level.evolution_chains.map(chain => {
+            const chains = Array.isArray(level.evolution_chains) ? level.evolution_chains : [];
+            if (chains.length === 0) {
+                container.innerHTML = '<div class="evolution-empty">No evolution data available.</div>';
+                return;
+            }
+
+            container.innerHTML = chains.map(chain => {
                 const stagesHtml = chain.stages.map((s, i) => `
                     <div class="evolution-stage">
                         <div class="evolution-stage-img" onclick="openModal('${s.image}')">
@@ -1272,13 +2008,19 @@
                 `).join('');
 
                 return `
-                <div class="evolution-chain fade-up">
+                <div class="evolution-chain">
                     <div class="evolution-chain-title">${chain.character}</div>
                     <div class="evolution-chain-subtitle">${chain.scripts.join(' → ')}</div>
                     <div class="evolution-timeline">${stagesHtml}</div>
                     <div class="evolution-desc">${highlightAnswer(chain.evolution.answer, 'evolution')}</div>
                 </div>`;
             }).join('');
+
+            requestAnimationFrame(() => {
+                container.querySelectorAll('.evolution-chain').forEach(chain => {
+                    chain.classList.add('visible');
+                });
+            });
         }
 
         // ==================== LEVEL TABS ====================
