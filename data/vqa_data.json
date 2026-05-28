@@ -364,530 +364,181 @@
     {
       "id": "l4",
       "name": "Level 4: 历时演变分析",
-      "short_name": "字形演变",
+      "short_name": "演变分析",
       "description": "梳理汉字从甲骨文到楷书的形体递变过程",
       "tasks": [
-        "evolution"
+        "evolution",
+        "analysis"
       ],
-      "examples": [],
-      "evolution_chains": [
+      "examples": [
         {
-          "character": "人",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "人_草书_4::vqa::evolution",
-            "image": "images/img_00034.jpg",
-            "character": "人",
-            "script": "草书",
-            "task": "evolution",
-            "question": "请梳理该字从甲骨文、金文至篆隶楷的字形递变过程。",
-            "answer": "甲骨文象侧立的人形，金文大同，篆文整齐化，隶变后楷书写作“人”。此草书字形线条流畅，展现了该字在书写中的简化与动态。"
-          },
+          "id": "㐭_隶书_3",
+          "image": "images/evo/㐭_main.jpg",
+          "character": "㐭",
+          "script": "隶书",
+          "task": "evolution",
+          "question": "请以专业文字学视角，分析该字的形体构造，并梳理其从造字之初到今日的字形演变历程。",
+          "answer": "【字头与结构】该隶书字形对应之现代字典字头为「㐭」，结构类型为⿱（上下结构），造字法归属象形字。\n\n【构件分解】该字由两个构件组成：\n「亠」承担表意功能，象粮仓的顶部；\n「回」承担表意功能，象粮仓的主体。\n\n【本义】据构形分析，该字初文本义为“容纳谷物的粮仓”。\n\n【字形演变】甲骨文象简易的粮仓之形；金文大同；篆文稍加简省并整齐化；隶变后笔画趋于平直；楷书写作“㐭”。该字是“稟”（禀）、“廩”（廪）的本字。",
           "stages": [
             {
               "script": "甲骨文",
-              "image": "images/img_00001.jpg",
-              "entry_id": "人_甲骨文_0"
+              "image": "images/evo/㐭_甲骨文.jpg"
             },
             {
               "script": "金文",
-              "image": "images/img_00002.jpg",
-              "entry_id": "人_金文_1"
+              "image": "images/evo/㐭_金文.jpg"
             },
             {
               "script": "篆书",
-              "image": "images/img_00035.jpg",
-              "entry_id": "人_篆书_2"
+              "image": "images/evo/㐭_篆书.jpg"
             },
             {
               "script": "隶书",
-              "image": "images/img_00027.jpg",
-              "entry_id": "人_隶书_3"
+              "image": "images/evo/㐭_隶书.jpg"
             },
             {
               "script": "楷书",
-              "image": "images/img_00028.png",
-              "entry_id": "人_楷书_5"
+              "image": "images/evo/㐭_楷书.png"
             },
             {
               "script": "草书",
-              "image": "images/img_00034.jpg",
-              "entry_id": "人_草书_4"
+              "image": "images/evo/㐭_草书.jpg"
             }
           ]
         },
         {
-          "character": "ɽ",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "山_金文_1::vqa::evolution",
-            "image": "images/img_00030.jpg",
-            "character": "ɽ",
-            "script": "金文",
-            "task": "evolution",
-            "question": "请依时代先后，说明该字字形的演变轨迹。",
-            "answer": "甲骨文象山峰连绵之形，线条勾勒；金文在此基础上进行填实处理，呈块状；篆文线条化，笔画圆转；隶变后楷书写作山，笔画平直化。"
-          },
+          "id": "㱃_楷书_7",
+          "image": "images/evo/㱃_main.png",
+          "character": "㱃",
+          "script": "楷书",
+          "task": "evolution",
+          "question": "请从形体构造与历史演变两个角度，对该字进行专业的文字学分析。",
+          "answer": "【字头与结构】该楷书字形对应之现代字典字头为「㱃」，结构类型为⿰（左右结构），造字法归属会意字。\n\n【构件分解】该字由两个构件组成：\n「酓」承担表意功能，由甲骨文中酒坛及口舌之形演变而来，金文中讹变为从今从酉；\n「欠」承担表意功能，由甲骨文中张口伸舌的人形演变而来。\n\n【本义】据构形分析，该字初文本义为“喝”。\n\n【字形演变】甲骨文象一人张口伸舌就坛子饮酒之状；金文中口与舌脱离人形讹为“今”，人形讹变为“欠”；隶变后楷书写作“㱃”。该字是“饮”的初文。",
           "stages": [
             {
               "script": "甲骨文",
-              "image": "images/img_00029.jpg",
-              "entry_id": "山_甲骨文_0"
+              "image": "images/evo/㱃_甲骨文.jpg"
             },
             {
               "script": "金文",
-              "image": "images/img_00030.jpg",
-              "entry_id": "山_金文_1"
+              "image": "images/evo/㱃_金文.jpg"
             },
             {
               "script": "篆书",
-              "image": "images/img_00036.jpg",
-              "entry_id": "山_篆书_2"
+              "image": "images/evo/㱃_篆书.jpg"
             },
             {
               "script": "隶书",
-              "image": "images/img_00005.jpg",
-              "entry_id": "山_隶书_3"
+              "image": "images/evo/㱃_隶书.jpg"
             },
             {
               "script": "楷书",
-              "image": "images/img_00006.png",
-              "entry_id": "山_楷书_5"
+              "image": "images/evo/㱃_楷书.png"
             },
             {
               "script": "草书",
-              "image": "images/img_00037.jpg",
-              "entry_id": "山_草书_4"
+              "image": "images/evo/㱃_草书.jpg"
             }
           ]
         },
         {
-          "character": "ˮ",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "水_篆书_2::vqa::evolution",
-            "image": "images/img_00016.jpg",
-            "character": "ˮ",
-            "script": "篆书",
-            "task": "evolution",
-            "question": "请概述该字在甲骨文、篆书、隶书、楷书等不同书体阶段的面貌变迁。",
-            "answer": "甲骨文象水流之形，金文承袭大同，至篆文则加以整齐化改造，将原本生动的流水曲线规范为对称均衡的婉转线条，形成中竖两侧各两笔的定型结构，奠定了后世书写的基础范式。"
-          },
+          "id": "冀_篆书_0::vqa::evolution",
+          "image": "images/evo/冀_main.jpg",
+          "character": "冀",
+          "script": "篆书",
+          "task": "evolution",
+          "question": "请概述该字在甲骨文、篆书、隶书、楷书等不同书体阶段的面貌变迁。",
+          "answer": "金文从異从飛会意，異兼表声，本义为恭谨。篆文承接金文整齐化。隶变后楷书分化为𩙺、翼、冀，其中𩙺、翼表翅膀义，冀表地名及希望义。",
           "stages": [
             {
-              "script": "甲骨文",
-              "image": "images/img_00038.jpg",
-              "entry_id": "水_甲骨文_0"
-            },
-            {
               "script": "金文",
-              "image": "images/img_00039.jpg",
-              "entry_id": "水_金文_1"
+              "image": "images/evo/冀_金文.jpg"
             },
             {
               "script": "篆书",
-              "image": "images/img_00016.jpg",
-              "entry_id": "水_篆书_2"
+              "image": "images/evo/冀_篆书.jpg"
             },
             {
               "script": "隶书",
-              "image": "images/img_00040.jpg",
-              "entry_id": "水_隶书_3"
+              "image": "images/evo/冀_隶书.jpg"
             },
             {
               "script": "楷书",
-              "image": "images/img_00041.png",
-              "entry_id": "水_楷书_5"
+              "image": "images/evo/冀_楷书.png"
             },
             {
               "script": "草书",
-              "image": "images/img_00042.jpg",
-              "entry_id": "水_草书_4"
+              "image": "images/evo/冀_草书.jpg"
             }
           ]
         },
         {
-          "character": "日",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "日_草书_4::vqa::evolution",
-            "image": "images/img_00021.jpg",
-            "character": "日",
-            "script": "草书",
-            "task": "evolution",
-            "question": "该字的形体从古到今经历了哪些关键转变？",
-            "answer": "甲骨文象太阳轮廓及光芒，金文大同，篆文整齐化。隶变后楷书写作日。草书为求书写快捷，将方折笔画简化为圆转连笔，但依然保留了其基本的构字框架。"
-          },
-          "stages": [
-            {
-              "script": "甲骨文",
-              "image": "images/img_00043.jpg",
-              "entry_id": "日_甲骨文_0"
-            },
-            {
-              "script": "金文",
-              "image": "images/img_00044.jpg",
-              "entry_id": "日_金文_1"
-            },
-            {
-              "script": "篆书",
-              "image": "images/img_00011.jpg",
-              "entry_id": "日_篆书_2"
-            },
-            {
-              "script": "隶书",
-              "image": "images/img_00045.jpg",
-              "entry_id": "日_隶书_3"
-            },
-            {
-              "script": "楷书",
-              "image": "images/img_00046.png",
-              "entry_id": "日_楷书_5"
-            },
-            {
-              "script": "草书",
-              "image": "images/img_00021.jpg",
-              "entry_id": "日_草书_4"
-            }
-          ]
-        },
-        {
-          "character": "月",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "月_楷书_4::vqa::evolution",
-            "image": "images/img_00047.png",
-            "character": "月",
-            "script": "楷书",
-            "task": "evolution",
-            "question": "请梳理该字从甲骨文、金文至篆隶楷的字形递变过程。",
-            "answer": "甲骨文与夕同形，皆象半月之形，后加点分化出月字。金文、篆文承袭此形并整齐化，隶变后楷书写作月。因篆文肉部与月形近，隶变后肉作左旁时俗写作月，遂与月亮之月混同，现代规范字形为独体。"
-          },
-          "stages": [
-            {
-              "script": "甲骨文",
-              "image": "images/img_00048.jpg",
-              "entry_id": "月_甲骨文_0"
-            },
-            {
-              "script": "金文",
-              "image": "images/img_00049.jpg",
-              "entry_id": "月_金文_0"
-            },
-            {
-              "script": "篆书",
-              "image": "images/img_00050.jpg",
-              "entry_id": "月_篆书_1"
-            },
-            {
-              "script": "隶书",
-              "image": "images/img_00033.jpg",
-              "entry_id": "月_隶书_2"
-            },
-            {
-              "script": "楷书",
-              "image": "images/img_00047.png",
-              "entry_id": "月_楷书_4"
-            },
-            {
-              "script": "草书",
-              "image": "images/img_00051.jpg",
-              "entry_id": "月_草书_3"
-            }
-          ]
-        },
-        {
-          "character": "ľ",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "木_草书_4::vqa::evolution",
-            "image": "images/img_00052.jpg",
-            "character": "ľ",
-            "script": "草书",
-            "task": "evolution",
-            "question": "该字在汉字发展史上经历了怎样的形体演变？",
-            "answer": "甲骨文象枝叶、茎干和根俱全的一棵树形，金文大同。篆文整齐化，隶变后楷书写作木。草书在楷书基础上笔意连贯，风格简约，保留了基本结构。"
-          },
-          "stages": [
-            {
-              "script": "甲骨文",
-              "image": "images/img_00053.jpg",
-              "entry_id": "木_甲骨文_0"
-            },
-            {
-              "script": "金文",
-              "image": "images/img_00054.jpg",
-              "entry_id": "木_金文_1"
-            },
-            {
-              "script": "篆书",
-              "image": "images/img_00055.jpg",
-              "entry_id": "木_篆书_2"
-            },
-            {
-              "script": "隶书",
-              "image": "images/img_00056.jpg",
-              "entry_id": "木_隶书_3"
-            },
-            {
-              "script": "楷书",
-              "image": "images/img_00057.png",
-              "entry_id": "木_楷书_5"
-            },
-            {
-              "script": "草书",
-              "image": "images/img_00052.jpg",
-              "entry_id": "木_草书_4"
-            }
-          ]
-        },
-        {
-          "character": "鱼",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "鱼_篆书_2::vqa::evolution",
-            "image": "images/img_00058.jpg",
-            "character": "鱼",
-            "script": "篆书",
-            "task": "evolution",
-            "question": "该字的形体从古到今经历了哪些关键转变？",
-            "answer": "甲骨文象嘴、鳍、鳞俱全的鱼形，金文保留鱼的大概轮廓。至篆文则整齐化，线条变得规整，象形特征减弱。隶变后楷书写作“魚”，如今简化作“鱼”。"
-          },
-          "stages": [
-            {
-              "script": "甲骨文",
-              "image": "images/img_00059.jpg",
-              "entry_id": "鱼_甲骨文_0"
-            },
-            {
-              "script": "金文",
-              "image": "images/img_00060.jpg",
-              "entry_id": "鱼_金文_1"
-            },
-            {
-              "script": "篆书",
-              "image": "images/img_00058.jpg",
-              "entry_id": "鱼_篆书_2"
-            },
-            {
-              "script": "隶书",
-              "image": "images/img_00061.jpg",
-              "entry_id": "鱼_隶书_3"
-            },
-            {
-              "script": "楷书",
-              "image": "images/img_00018.png",
-              "entry_id": "鱼_楷书_0"
-            },
-            {
-              "script": "草书",
-              "image": "images/img_00062.jpg",
-              "entry_id": "鱼_草书_5"
-            }
-          ]
-        },
-        {
-          "character": "虎",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "虎_楷书_6::vqa::evolution",
-            "image": "images/img_00063.png",
-            "character": "虎",
-            "script": "楷书",
-            "task": "evolution",
-            "question": "该字的形体从古到今经历了哪些关键转变？",
-            "answer": "甲骨文象大嘴巨身带花纹的老虎形，金文稍讹，篆文整齐化，隶变后楷书写作虎，今简体承其结构，上部为虍，下部作几。"
-          },
-          "stages": [
-            {
-              "script": "甲骨文",
-              "image": "images/img_00064.jpg",
-              "entry_id": "虎_甲骨文_0"
-            },
-            {
-              "script": "金文",
-              "image": "images/img_00065.jpg",
-              "entry_id": "虎_金文_1"
-            },
-            {
-              "script": "篆书",
-              "image": "images/img_00066.jpg",
-              "entry_id": "虎_篆书_2"
-            },
-            {
-              "script": "隶书",
-              "image": "images/img_00067.jpg",
-              "entry_id": "虎_隶书_3"
-            },
-            {
-              "script": "楷书",
-              "image": "images/img_00063.png",
-              "entry_id": "虎_楷书_6"
-            },
-            {
-              "script": "草书",
-              "image": "images/img_00068.jpg",
-              "entry_id": "虎_草书_5"
-            }
-          ]
-        },
-        {
-          "character": "¹",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "鹿_隶书_3::vqa::evolution",
-            "image": "images/img_00023.jpg",
-            "character": "¹",
-            "script": "隶书",
-            "task": "evolution",
-            "question": "请依时代先后，说明该字字形的演变轨迹。",
-            "answer": "甲骨文、金文象头上长有树枝状角的雄鹿之形，象形性极强；篆文形体趋于线条化、文字化；隶变后楷书写作鹿，原象形部件发生讹变，分别演变为广和比，形体进一步符号化。"
-          },
-          "stages": [
-            {
-              "script": "甲骨文",
-              "image": "images/img_00019.jpg",
-              "entry_id": "鹿_甲骨文_0"
-            },
-            {
-              "script": "金文",
-              "image": "images/img_00069.jpg",
-              "entry_id": "鹿_金文_1"
-            },
-            {
-              "script": "篆书",
-              "image": "images/img_00070.jpg",
-              "entry_id": "鹿_篆书_2"
-            },
-            {
-              "script": "隶书",
-              "image": "images/img_00023.jpg",
-              "entry_id": "鹿_隶书_3"
-            },
-            {
-              "script": "楷书",
-              "image": "images/img_00071.png",
-              "entry_id": "鹿_楷书_5"
-            },
-            {
-              "script": "草书",
-              "image": "images/img_00025.jpg",
-              "entry_id": "鹿_草书_4"
-            }
-          ]
-        },
-        {
+          "id": "鬱_楷书_6::vqa::evolution",
+          "image": "images/img_00072.png",
           "character": "鬱",
-          "scripts": [
-            "甲骨文",
-            "金文",
-            "篆书",
-            "隶书",
-            "楷书",
-            "草书"
-          ],
-          "evolution": {
-            "id": "鬱_楷书_6::vqa::evolution",
-            "image": "images/img_00072.png",
-            "character": "鬱",
-            "script": "楷书",
-            "task": "evolution",
-            "question": "请描述该字自初文以来各历史阶段字形的传承与变异。",
-            "answer": "甲骨文从二人在林中采集，会林木茂盛之意；金文从林从手持矢，篆文从林从鬱省会意兼形声。隶变后楷书写作鬱，异体作鬰。现代简化字将下部复杂的“鬱”省改为“缶”，形成现行简体字形。"
-          },
+          "script": "楷书",
+          "task": "evolution",
+          "question": "请描述该字自初文以来各历史阶段字形的传承与变异。",
+          "answer": "甲骨文从二人在林中采集，会林木茂盛之意；金文从林从手持矢，篆文从林从鬱省会意兼形声。隶变后楷书写作鬱，异体作鬰。现代简化字将下部复杂的“鬱”省改为“缶”，形成现行简体字形。",
           "stages": [
             {
               "script": "甲骨文",
-              "image": "images/img_00013.jpg",
-              "entry_id": "鬱_甲骨文_0"
+              "image": "images/img_00013.jpg"
             },
             {
               "script": "金文",
-              "image": "images/img_00073.jpg",
-              "entry_id": "鬱_金文_0"
+              "image": "images/img_00073.jpg"
             },
             {
               "script": "篆书",
-              "image": "images/img_00074.jpg",
-              "entry_id": "鬱_篆书_1"
+              "image": "images/img_00074.jpg"
             },
             {
               "script": "隶书",
-              "image": "images/img_00075.jpg",
-              "entry_id": "鬱_隶书_4"
+              "image": "images/img_00075.jpg"
             },
             {
               "script": "楷书",
-              "image": "images/img_00072.png",
-              "entry_id": "鬱_楷书_6"
+              "image": "images/img_00072.png"
             },
             {
               "script": "草书",
-              "image": "images/img_00076.jpg",
-              "entry_id": "鬱_草书_5"
+              "image": "images/img_00076.jpg"
+            }
+          ]
+        },
+        {
+          "id": "䍩_楷书_4::vqa::evolution",
+          "image": "images/evo/䍩_main.png",
+          "character": "䍩",
+          "script": "楷书",
+          "task": "evolution",
+          "question": "该字在汉字发展史上经历了怎样的形体演变？",
+          "answer": "【初文构造】甲骨文由“羊”与“支”构成，会意兼形声。\n\n【字形演变】经过隶变与楷化，右侧的“支”讹变为“攵”，最终形成“䍩”。该字被视为“養”（养）的古字异体。",
+          "stages": [
+            {
+              "script": "甲骨文",
+              "image": "images/evo/䍩_甲骨文.jpg"
+            },
+            {
+              "script": "金文",
+              "image": "images/evo/䍩_金文.jpg"
+            },
+            {
+              "script": "篆书",
+              "image": "images/evo/䍩_篆书.jpg"
+            },
+            {
+              "script": "隶书",
+              "image": "images/evo/䍩_隶书.jpg"
+            },
+            {
+              "script": "楷书",
+              "image": "images/evo/䍩_楷书.png"
+            },
+            {
+              "script": "草书",
+              "image": "images/evo/䍩_草书.jpg"
             }
           ]
         }

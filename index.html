@@ -793,7 +793,180 @@
         .evolution-desc .hl-meaning { color: #34d399; font-weight: 600; }
         .evolution-desc .hl-etymology { color: #f59e0b; font-weight: 600; }
 
-        /* ========== EVOLUTION HOVER EFFECT ========== */
+        /* ========== EVOLUTION TOGGLE & TIMELINE (L4) ========== */
+        .evo-answer-wrap {
+            position: relative;
+            padding-right: 42px;
+        }
+
+        .evo-toggle-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid rgba(100, 73, 43, 0.2);
+            background: rgba(255, 250, 241, 0.88);
+            color: var(--muted-ink);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+            font-family: inherit;
+            z-index: 2;
+        }
+
+        .evo-toggle-btn:hover {
+            background: rgba(157, 20, 20, 0.08);
+            border-color: rgba(157, 20, 20, 0.3);
+            color: var(--seal-red);
+        }
+
+        .evo-toggle-btn .chevron {
+            width: 10px;
+            height: 5px;
+            position: relative;
+        }
+
+        .evo-toggle-btn .chevron::before,
+        .evo-toggle-btn .chevron::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 6px;
+            height: 6px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg);
+        }
+
+        .evo-toggle-btn .chevron::before { left: 0; }
+        .evo-toggle-btn .chevron::after { left: 3px; }
+
+        .evo-toggle-btn.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .evo-toggle-btn.open .chevron::before,
+        .evo-toggle-btn.open .chevron::after {
+            /* already rotated by parent */
+        }
+
+        /* --- Timeline panel --- */
+        .evo-timeline-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.45s, opacity 0.35s;
+            opacity: 0;
+            border-top: 0 solid transparent;
+        }
+
+        .evo-timeline-panel.open {
+            max-height: 360px;
+            opacity: 1;
+            border-top: 1px solid rgba(100, 73, 43, 0.12);
+            margin-top: 14px;
+            padding-top: 14px;
+        }
+
+        .evo-timeline-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 8px 0;
+        }
+
+        .evo-stage-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+            min-width: 64px;
+            max-width: 90px;
+        }
+
+        .evo-stage-img {
+            width: 68px;
+            height: 68px;
+            border-radius: 8px;
+            background: linear-gradient(180deg, rgba(246, 234, 210, 0.86), rgba(255, 250, 241, 0.94));
+            border: 1px solid rgba(100, 73, 43, 0.16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .evo-stage-img:hover {
+            border-color: rgba(157, 20, 20, 0.32);
+            box-shadow: 0 6px 18px rgba(73, 46, 24, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .evo-stage-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .evo-stage-script {
+            font-size: 0.75rem;
+            color: var(--muted-ink);
+            font-weight: 500;
+            text-align: center;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+        }
+
+        .evo-arrow-connector {
+            display: flex;
+            align-items: center;
+            padding-top: 24px;
+            color: var(--seal-red);
+            opacity: 0.4;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Hover reveal effect for timeline --- */
+        .evo-timeline-row:hover .evo-stage-img {
+            opacity: 0.5;
+            transform: scale(0.94);
+        }
+
+        .evo-timeline-row:hover .evo-stage-item:hover .evo-stage-img {
+            opacity: 1;
+            transform: scale(1.06);
+            border-color: rgba(157, 20, 20, 0.4);
+            box-shadow: 0 8px 24px rgba(73, 46, 24, 0.16);
+        }
+
+        .evo-timeline-row:hover .evo-stage-script {
+            opacity: 0.5;
+        }
+
+        .evo-timeline-row:hover .evo-stage-item:hover .evo-stage-script {
+            opacity: 1;
+            color: var(--seal-red);
+        }
+
+        @media (max-width: 768px) {
+            .evo-stage-item { min-width: 56px; max-width: 72px; }
+            .evo-stage-img { width: 56px; height: 56px; }
+            .evo-arrow-connector { padding-top: 18px; }
+            .evo-toggle-btn { width: 28px; height: 28px; }
+            .evo-answer-wrap { padding-right: 36px; }
+        }
         .evolution-timeline:hover .evolution-stage-img {
             opacity: 0.45;
             transform: scale(0.92);
@@ -908,12 +1081,473 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ========== METADATA TAB ========== */
+        .meta-tab {
+            border-left: 3px solid var(--seal-red);
+        }
+        .meta-tab .tab-icon {
+            font-size: 1rem;
+            color: var(--seal-red);
+        }
+
+        /* ========== METADATA CONTENT ========== */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .meta-card {
+            background: linear-gradient(180deg, rgba(255, 252, 244, 0.97), rgba(250, 244, 232, 0.94));
+            border: 1px solid rgba(100, 73, 43, 0.18);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 14px 38px rgba(73, 46, 24, 0.1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-card:hover {
+            border-color: rgba(157, 20, 20, 0.26);
+            box-shadow: 0 20px 48px rgba(73, 46, 24, 0.16);
+            transform: translateY(-3px);
+        }
+
+        .meta-card-header {
+            padding: 24px 24px 18px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            border-bottom: 1px solid rgba(100, 73, 43, 0.1);
+        }
+
+        .meta-char-frame {
+            flex-shrink: 0;
+            width: 82px;
+            height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            font-weight: 700;
+            color: var(--ink);
+            background: linear-gradient(180deg, rgba(246, 234, 210, 0.86), rgba(255, 250, 241, 0.94));
+            border: 2px solid rgba(157, 20, 20, 0.2);
+            border-radius: 8px;
+            box-shadow: inset 0 0 22px rgba(157, 20, 20, 0.05);
+            position: relative;
+        }
+
+        .meta-char-frame::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border: 1px solid rgba(157, 20, 20, 0.1);
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        .meta-header-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .meta-badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .meta-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+        }
+
+        .meta-badge.script {
+            background: rgba(28, 107, 99, 0.1);
+            border: 1px solid rgba(28, 107, 99, 0.22);
+            color: var(--jade);
+        }
+
+        .meta-badge.method {
+            background: rgba(143, 95, 42, 0.09);
+            border: 1px solid rgba(143, 95, 42, 0.2);
+            color: var(--bronze);
+        }
+
+        .meta-badge.structure {
+            background: rgba(157, 20, 20, 0.07);
+            border: 1px solid rgba(157, 20, 20, 0.18);
+            color: var(--seal-red);
+            font-size: 1rem;
+            padding: 2px 10px;
+        }
+
+        .meta-original-meaning {
+            font-size: 0.95rem;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .meta-original-meaning .label {
+            display: inline-block;
+            font-weight: 600;
+            color: var(--seal-red);
+            margin-right: 6px;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            font-size: 0.85rem;
+            padding: 1px 6px;
+            background: rgba(157, 20, 20, 0.06);
+            border-radius: 4px;
+        }
+
+        .meta-original-meaning .value {
+            color: var(--muted-ink);
+        }
+
+        .meta-pinyin-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .meta-pinyin-row .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--muted-ink);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            margin-right: 2px;
+        }
+
+        .meta-pinyin-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            background: rgba(143, 95, 42, 0.06);
+            border: 1px solid rgba(143, 95, 42, 0.16);
+            border-radius: 20px;
+            font-size: 0.82rem;
+            color: var(--bronze);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        /* --- Metadata image gallery --- */
+        .meta-img-section {
+            padding: 4px 24px 0;
+        }
+
+        .meta-img-gallery {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 14px 0;
+            border-top: 1px solid rgba(100, 73, 43, 0.08);
+            overflow-x: auto;
+        }
+
+        .meta-img-thumb {
+            width: 64px;
+            height: 64px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            background: linear-gradient(180deg, rgba(246, 234, 210, 0.86), rgba(255, 250, 241, 0.94));
+            border: 1px solid rgba(100, 73, 43, 0.16);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            flex-shrink: 0;
+        }
+
+        .meta-img-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            transition: transform 0.3s;
+        }
+
+        .meta-img-thumb:hover {
+            border-color: rgba(157, 20, 20, 0.32);
+            box-shadow: 0 6px 18px rgba(73, 46, 24, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .meta-img-thumb:hover img {
+            transform: scale(1.08);
+        }
+
+        .meta-img-count {
+            font-size: 0.72rem;
+            color: var(--muted-ink);
+            padding: 2px 8px;
+            background: rgba(100, 73, 43, 0.05);
+            border-radius: 10px;
+            margin-left: 4px;
+        }
+
+        /* --- Metadata body sections --- */
+        .meta-card-body {
+            padding: 20px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .meta-section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 10px;
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+        }
+
+        .meta-section-label::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            border-radius: 2px;
+            background: var(--seal-red);
+        }
+
+        /* --- Components --- */
+        .meta-component-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .meta-component-item {
+            background: rgba(255, 250, 241, 0.78);
+            border: 1px solid rgba(100, 73, 43, 0.12);
+            border-radius: 8px;
+            padding: 14px 16px;
+            transition: all 0.25s;
+        }
+
+        .meta-component-item:hover {
+            border-color: rgba(157, 20, 20, 0.18);
+            background: rgba(255, 250, 241, 0.96);
+        }
+
+        .meta-component-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .meta-component-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--ink);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+        }
+
+        .meta-component-funcs {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .meta-component-func {
+            display: inline-block;
+            padding: 1px 8px;
+            background: rgba(28, 107, 99, 0.09);
+            border: 1px solid rgba(28, 107, 99, 0.18);
+            border-radius: 4px;
+            font-size: 0.72rem;
+            color: var(--jade);
+            font-weight: 600;
+        }
+
+        .meta-component-desc {
+            font-size: 0.88rem;
+            color: var(--muted-ink);
+            line-height: 1.7;
+        }
+
+        /* --- Evolution text --- */
+        .meta-evolution-text {
+            font-size: 0.9rem;
+            color: var(--muted-ink);
+            line-height: 1.8;
+            background: rgba(255, 250, 241, 0.72);
+            border: 1px solid rgba(100, 73, 43, 0.12);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        /* --- Meaning chunks table --- */
+        .meta-chunks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .meta-chunks-count {
+            font-size: 0.78rem;
+            color: var(--muted-ink);
+            font-weight: 400;
+            margin-left: 6px;
+        }
+
+        .meta-chunks-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            background: rgba(255, 250, 241, 0.88);
+            border: 1px solid rgba(100, 73, 43, 0.16);
+            border-radius: 6px;
+            font-size: 0.78rem;
+            color: var(--muted-ink);
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+        }
+
+        .meta-chunks-toggle:hover {
+            background: rgba(157, 20, 20, 0.06);
+            border-color: rgba(157, 20, 20, 0.22);
+            color: var(--seal-red);
+        }
+
+        .meta-chunks-toggle i {
+            transition: transform 0.3s;
+            font-size: 0.7rem;
+        }
+
+        .meta-chunks-toggle.open i {
+            transform: rotate(180deg);
+        }
+
+        .meta-chunks-wrapper {
+            max-height: 340px;
+            overflow-y: auto;
+            border: 1px solid rgba(100, 73, 43, 0.12);
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .meta-chunks-wrapper.open {
+            display: block;
+        }
+
+        .meta-chunks-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+
+        .meta-chunks-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        .meta-chunks-table th {
+            background: rgba(255, 250, 241, 0.98);
+            border-bottom: 1px solid rgba(100, 73, 43, 0.14);
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--muted-ink);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            white-space: nowrap;
+        }
+
+        .meta-chunks-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(100, 73, 43, 0.06);
+            color: var(--muted-ink);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .meta-chunks-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .meta-chunks-table tbody tr:nth-child(even) {
+            background: rgba(255, 250, 241, 0.5);
+        }
+
+        .meta-chunks-table tbody tr:hover {
+            background: rgba(157, 20, 20, 0.04);
+        }
+
+        .meta-chunks-table .col-pinyin {
+            color: var(--seal-red);
+            font-weight: 500;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .meta-chunks-table .col-pos {
+            color: var(--bronze);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .meta-chunks-table .col-notes {
+            color: var(--jade);
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        .meta-chunks-table .col-examples {
+            font-size: 0.78rem;
+            max-width: 220px;
+        }
+
+        /* --- Chunks wrapper scrollbar --- */
+        .meta-chunks-wrapper::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .meta-chunks-wrapper::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .meta-chunks-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(100, 73, 43, 0.15);
+            border-radius: 10px;
+        }
+
         @media (max-width: 768px) {
             .evolution-arrow { display: none; }
             .evolution-timeline { gap: 12px; }
             .evolution-stage { min-width: 80px; max-width: 100px; }
             .level-tab { min-width: 100px; padding: 12px 16px; }
             .demo-grid { grid-template-columns: 1fr; }
+            .meta-grid { grid-template-columns: 1fr; }
+            .meta-card-header { flex-direction: column; align-items: center; text-align: center; }
+            .meta-header-info { align-items: center; }
+            .meta-badge-row { justify-content: center; }
+            .meta-pinyin-row { justify-content: center; }
         }
 
         /* ========== ANIMATIONS ========== */
@@ -1760,7 +2394,11 @@
 
             <!-- Level Tabs -->
             <div class="level-tabs fade-up" id="levelTabs">
-                <button class="level-tab active" data-level="l1">
+                <button class="level-tab meta-tab active" data-level="metadata">
+                    <div class="tab-num"><i class="fas fa-scroll"></i></div>
+                    <div class="tab-text">元数据</div>
+                </button>
+                <button class="level-tab" data-level="l1">
                     <div class="tab-num">L1</div>
                     <div class="tab-text">基本字形识别</div>
                 </button>
@@ -1787,8 +2425,8 @@
             <!-- L1-L3 Content: Example Grid -->
             <div class="demo-content fade-up" id="demoContent"></div>
 
-            <!-- L4 Content: Evolution Chains -->
-            <div class="evolution-content fade-up" id="evolutionContent" style="display:none;"></div>
+            <!-- Metadata Content -->
+            <div class="meta-content fade-up" id="metaContent" style="display:none;"></div>
         </div>
     </section>
 
@@ -1832,14 +2470,31 @@
             l4: { tag: 'Level 4', text: '梳理汉字从甲骨文到楷书的形体递变过程' }
         };
 
+        // ==================== METADATA DATA ====================
+        let metaSamples = [];
+
+        async function loadMetadata() {
+            try {
+                const resp = await fetch('data/meta_samples.json');
+                metaSamples = await resp.json();
+                return true;
+            } catch (e) {
+                console.error('Failed to load metadata:', e);
+                return false;
+            }
+        }
+
         async function loadData() {
             try {
-                const response = await fetch('data/vqa_data.json');
-                vqaData = await response.json();
-                renderLevel('l1');
+                const [vqaResp, metaOk] = await Promise.all([
+                    fetch('data/vqa_data.json'),
+                    loadMetadata()
+                ]);
+                vqaData = await vqaResp.json();
+                renderLevel('metadata');
             } catch (error) {
-                console.error('Failed to load VQA data:', error);
-                document.getElementById('demoContent').innerHTML =
+                console.error('Failed to load data:', error);
+                document.getElementById('metaContent').innerHTML =
                     '<p style="text-align:center;color:var(--text-secondary);">Failed to load data.</p>';
             }
         }
@@ -1876,8 +2531,165 @@
         }
 
         // ==================== RENDER LEVEL ====================
+        // ==================== RENDER METADATA ====================
+        function renderMetadata() {
+            const container = document.getElementById('metaContent');
+            const html = metaSamples.map((m, cardIdx) => {
+                const methodBadges = m.creation_method.map(cm =>
+                    `<span class="meta-badge method">${cm}</span>`
+                ).join('');
+
+                const pinyinTags = m.pinyin.map(p =>
+                    `<span class="meta-pinyin-tag">${p}</span>`
+                ).join('');
+
+                const imgThumbs = (m.images || []).map((img, i) =>
+                    `<div class="meta-img-thumb" onclick="openModal('${img}')" title="点击放大">
+                        <img src="${img}" alt="${m.character} ${m.script} 图片${i+1}" loading="lazy">
+                    </div>`
+                ).join('');
+
+                const componentsHtml = m.components.map(c => {
+                    const funcBadges = c.function.map(f =>
+                        `<span class="meta-component-func">${f}</span>`
+                    ).join('');
+                    return `
+                        <div class="meta-component-item">
+                            <div class="meta-component-header">
+                                <span class="meta-component-name">${c.component}</span>
+                                <div class="meta-component-funcs">${funcBadges}</div>
+                            </div>
+                            <div class="meta-component-desc">${c.explanation}</div>
+                        </div>
+                    `;
+                }).join('');
+
+                const chunks = m.meaning_chunks || [];
+                const chunkCount = chunks.length;
+                const tableId = `chunks-table-${cardIdx}`;
+                const shouldCollapse = chunkCount > 6;
+                const tableRows = chunks.map(c => `
+                    <tr>
+                        <td class="col-pinyin">${c.pinyin}</td>
+                        <td class="col-pos">${c.pos}</td>
+                        <td>${c.meaning}</td>
+                        <td class="col-notes">${c.notes || ''}</td>
+                        <td class="col-examples">${(c.examples || '').replace(/\|/g, ' | ')}</td>
+                    </tr>
+                `).join('');
+
+                const imgSection = (m.images && m.images.length > 0) ? `
+                    <div class="meta-img-section">
+                        <div class="meta-img-gallery">${imgThumbs}</div>
+                    </div>
+                ` : '';
+
+                const chunksSection = chunkCount > 0 ? `
+                    <div class="meta-section">
+                        <div class="meta-chunks-header" onclick="toggleChunks('${tableId}', this)">
+                            <div class="meta-section-label" style="margin-bottom:0;cursor:pointer;">
+                                义项详解<span class="meta-chunks-count">(${chunkCount} 项)</span>
+                            </div>
+                            <button class="meta-chunks-toggle${shouldCollapse ? '' : ' open'}">
+                                <span class="toggle-text">${shouldCollapse ? '展开' : '收起'}</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="meta-chunks-wrapper${shouldCollapse ? '' : ' open'}" id="${tableId}">
+                            <table class="meta-chunks-table">
+                                <thead>
+                                    <tr>
+                                        <th>拼音</th>
+                                        <th>词性</th>
+                                        <th>释义</th>
+                                        <th>备注</th>
+                                        <th>例句</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${tableRows}</tbody>
+                            </table>
+                        </div>
+                    </div>
+                ` : '';
+
+                return `
+                <div class="meta-card">
+                    <div class="meta-card-header">
+                        <div class="meta-char-frame">${m.character}</div>
+                        <div class="meta-header-info">
+                            <div class="meta-badge-row">
+                                <span class="meta-badge script">${m.script}</span>
+                                ${methodBadges}
+                                <span class="meta-badge structure">${m.structure}</span>
+                            </div>
+                            <div class="meta-original-meaning">
+                                <span class="label">本义</span><span class="value">${m.original_meaning}</span>
+                            </div>
+                            <div class="meta-pinyin-row">
+                                <span class="label">拼音</span>${pinyinTags}
+                            </div>
+                        </div>
+                    </div>
+                    ${imgSection}
+                    <div class="meta-card-body">
+                        <div class="meta-section">
+                            <div class="meta-section-label">构件分解</div>
+                            <div class="meta-component-list">${componentsHtml}</div>
+                        </div>
+                        <div class="meta-section">
+                            <div class="meta-section-label">字形演变</div>
+                            <div class="meta-evolution-text">${m.evolution}</div>
+                        </div>
+                        ${chunksSection}
+                    </div>
+                </div>`;
+            }).join('');
+
+            container.innerHTML = `<div class="meta-grid">${html}</div>`;
+            container.classList.add('visible');
+            container.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+        }
+
+        window.toggleChunks = function(tableId, headerEl) {
+            const wrapper = document.getElementById(tableId);
+            const toggle = headerEl.querySelector('.meta-chunks-toggle');
+            const text = toggle.querySelector('.toggle-text');
+            const isOpen = wrapper.classList.contains('open');
+            if (isOpen) {
+                wrapper.classList.remove('open');
+                toggle.classList.remove('open');
+                text.textContent = '展开';
+            } else {
+                wrapper.classList.add('open');
+                toggle.classList.add('open');
+                text.textContent = '收起';
+            }
+        };
+
         function renderLevel(levelId) {
             currentLevel = levelId;
+
+            // Update tabs
+            document.querySelectorAll('.level-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.level === levelId);
+            });
+
+            // Handle metadata level
+            if (levelId === 'metadata') {
+                document.getElementById('demoContent').style.display = 'none';
+                document.getElementById('metaContent').style.display = 'block';
+                document.getElementById('levelTag').textContent = 'Metadata';
+                document.getElementById('levelDescText').textContent = 'JieZi-Dataset 为每个古文字提供了丰富的元数据，包括构件分解、造字方法、字形结构、本义、历时演变及详细义项';
+                renderMetadata();
+                const mc = document.getElementById('metaContent');
+                mc.classList.remove('visible');
+                setTimeout(() => { mc.classList.add('visible'); }, 50);
+                return;
+            }
+
+            // Hide metadata content for L1-L4
+            document.getElementById('metaContent').style.display = 'none';
+
             const level = vqaData.levels.find(l => l.id === levelId);
             const desc = levelDesc[levelId];
             if (!level || !desc) return;
@@ -1891,18 +2703,12 @@
             document.getElementById('levelTag').textContent = desc.tag;
             document.getElementById('levelDescText').textContent = desc.text;
 
-            if (levelId === 'l4') {
-                document.getElementById('demoContent').style.display = 'none';
-                document.getElementById('evolutionContent').style.display = 'block';
-                renderEvolution(level);
-            } else {
-                document.getElementById('demoContent').style.display = 'block';
-                document.getElementById('evolutionContent').style.display = 'none';
-                renderExamples(level.examples);
-            }
+            // Show demo content for all levels (L4 uses renderExamples with stages support)
+            document.getElementById('demoContent').style.display = 'block';
+            renderExamples(level.examples);
 
             // Re-trigger fade
-            const visible = document.querySelector('.demo-content[style*="block"], .evolution-content[style*="block"]');
+            const visible = document.querySelector('.demo-content[style*="block"]');
             if (visible) {
                 visible.classList.remove('visible');
                 visible.querySelectorAll('.fade-up').forEach(el => el.classList.remove('visible'));
@@ -1971,7 +2777,25 @@
 
         function renderExamples(examples) {
             const container = document.getElementById('demoContent');
-            container.innerHTML = `<div class="demo-grid">${examples.map((ex, idx) => `
+            container.innerHTML = `<div class="demo-grid">${examples.map((ex, idx) => {
+                const hasStages = ex.stages && ex.stages.length > 0;
+                let stagesHtml = '';
+                if (hasStages) {
+                    stagesHtml = ex.stages.map((s, si) => {
+                        const isLast = si === ex.stages.length - 1;
+                        return `
+                            <div class="evo-stage-item">
+                                <div class="evo-stage-img" onclick="openModal('${s.image}')">
+                                    <img src="${s.image}" alt="${ex.character} ${s.script}" loading="lazy">
+                                </div>
+                                <span class="evo-stage-script">${s.script}</span>
+                            </div>
+                            ${!isLast ? '<div class="evo-arrow-connector"><i class="fas fa-chevron-right"></i></div>' : ''}
+                        `;
+                    }).join('');
+                }
+
+                return `
                 <div class="demo-card">
                     <div class="demo-card-img-wrap">
                         <span class="char-badge">${ex.character}</span>
@@ -1980,47 +2804,40 @@
                     </div>
                     <div class="demo-card-body">
                         <div class="demo-question">${ex.question}</div>
-                        <div class="demo-answer">${highlightAnswer(ex.answer, ex.task)}</div>
+                        <div class="evo-answer-wrap">
+                            <div class="demo-answer">${highlightAnswer(ex.answer, ex.task)}</div>
+                            ${hasStages ? `
+                            <button class="evo-toggle-btn" onclick="toggleEvolution(${idx})" title="展开字形演变时间轴" aria-label="展开字形演变">
+                                <span class="chevron"></span>
+                                <span class="chevron"></span>
+                            </button>
+                            ` : ''}
+                        </div>
                         ${ex.task === 'components' ? renderComponentPanel(ex, idx) : ''}
                         <span class="task-tag">${taskNames[ex.task] || ex.task}</span>
+                        ${hasStages ? `
+                        <div class="evo-timeline-panel" id="evo-panel-${idx}">
+                            <div class="evo-timeline-row">${stagesHtml}</div>
+                        </div>
+                        ` : ''}
                     </div>
-                </div>
-            `).join('')}</div>`;
+                </div>`;
+            }).join('')}</div>`;
         }
 
-        function renderEvolution(level) {
-            const container = document.getElementById('evolutionContent');
-            const chains = Array.isArray(level.evolution_chains) ? level.evolution_chains : [];
-            if (chains.length === 0) {
-                container.innerHTML = '<div class="evolution-empty">No evolution data available.</div>';
-                return;
+        function toggleEvolution(cardIdx) {
+            const panel = document.getElementById(`evo-panel-${cardIdx}`);
+            if (!panel) return;
+            const card = panel.closest('.demo-card');
+            const btn = card ? card.querySelector('.evo-toggle-btn') : null;
+            const isOpen = panel.classList.contains('open');
+            if (isOpen) {
+                panel.classList.remove('open');
+                if (btn) btn.classList.remove('open');
+            } else {
+                panel.classList.add('open');
+                if (btn) btn.classList.add('open');
             }
-
-            container.innerHTML = chains.map(chain => {
-                const stagesHtml = chain.stages.map((s, i) => `
-                    <div class="evolution-stage">
-                        <div class="evolution-stage-img" onclick="openModal('${s.image}')">
-                            <img src="${s.image}" alt="${chain.character} ${s.script}" loading="lazy">
-                        </div>
-                        <span class="evolution-stage-label">${s.script}</span>
-                    </div>
-                    ${i < chain.stages.length - 1 ? '<div class="evolution-arrow"><i class="fas fa-chevron-right"></i></div>' : ''}
-                `).join('');
-
-                return `
-                <div class="evolution-chain">
-                    <div class="evolution-chain-title">${chain.character}</div>
-                    <div class="evolution-chain-subtitle">${chain.scripts.join(' → ')}</div>
-                    <div class="evolution-timeline">${stagesHtml}</div>
-                    <div class="evolution-desc">${highlightAnswer(chain.evolution.answer, 'evolution')}</div>
-                </div>`;
-            }).join('');
-
-            requestAnimationFrame(() => {
-                container.querySelectorAll('.evolution-chain').forEach(chain => {
-                    chain.classList.add('visible');
-                });
-            });
         }
 
         // ==================== LEVEL TABS ====================
