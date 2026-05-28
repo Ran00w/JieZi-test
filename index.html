@@ -797,6 +797,7 @@
         .evo-answer-wrap {
             position: relative;
             padding-right: 42px;
+            min-height: 40px;
         }
 
         .evo-toggle-btn {
@@ -2486,16 +2487,14 @@
 
         async function loadData() {
             try {
-                const [vqaResp, metaOk] = await Promise.all([
-                    fetch('data/vqa_data.json'),
-                    loadMetadata()
-                ]);
+                const vqaResp = await fetch('data/vqa_data.json');
                 vqaData = await vqaResp.json();
+                loadMetadata(); // fire-and-forget, don't block
                 renderLevel('metadata');
             } catch (error) {
                 console.error('Failed to load data:', error);
-                document.getElementById('metaContent').innerHTML =
-                    '<p style="text-align:center;color:var(--text-secondary);">Failed to load data.</p>';
+                document.getElementById('demoContent').innerHTML =
+                    '<p style="text-align:center;color:var(--text-secondary);padding:40px;">数据加载失败，请刷新重试。</p>';
             }
         }
 
@@ -2703,20 +2702,23 @@
             document.getElementById('levelTag').textContent = desc.tag;
             document.getElementById('levelDescText').textContent = desc.text;
 
-            // Show demo content for all levels (L4 uses renderExamples with stages support)
+            // Show demo content and render
             document.getElementById('demoContent').style.display = 'block';
-            renderExamples(level.examples);
+            try {
+                renderExamples(level.examples);
+            } catch (e) {
+                document.getElementById('demoContent').innerHTML =
+                    '<p style="text-align:center;color:var(--text-secondary);padding:40px;">渲染出错: ' + e.message + '</p>';
+            }
 
             // Re-trigger fade
-            const visible = document.querySelector('.demo-content[style*="block"]');
-            if (visible) {
-                visible.classList.remove('visible');
-                visible.querySelectorAll('.fade-up').forEach(el => el.classList.remove('visible'));
-                setTimeout(() => {
-                    visible.classList.add('visible');
-                    visible.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
-                }, 50);
-            }
+            const demo = document.getElementById('demoContent');
+            demo.classList.remove('visible');
+            demo.querySelectorAll('.fade-up').forEach(el => el.classList.remove('visible'));
+            setTimeout(() => {
+                demo.classList.add('visible');
+                demo.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+            }, 50);
         }
 
         // ==================== COMPONENT PARSER ====================
